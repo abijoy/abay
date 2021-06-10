@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Auction Appp</title>
+</head>
+<body>
+{% block content %}
+  <h2>Register | Log In</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enter</button>
+  </form>
+{% endblock %}
+</body>
+</html>
