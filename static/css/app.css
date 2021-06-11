@@ -44,12 +44,18 @@ table,th,td {
 	color: black;
 }
 
-.messages {
+.warning {
+	display: inline-block;
+    background: hsl(29deg 74% 95%);
+    padding: 8px 15px;
+    border-left: 5px solid hsl(23deg 83% 64%);
+}
+
+.info {
 	display: inline-block;
     background: hsl(146deg 100% 97%);
     padding: 8px 15px;
     border-left: 5px solid hsl(159deg 63% 63%);
-    /*border-radius: 4px;*/
 }
 
 .bid-table-info {
@@ -64,19 +70,40 @@ table,th,td {
 	border: 1px solid hsl(159deg 63% 63%);
 	padding: 5px 5px 5px;
 }
-/*.row{
-	grid-gap: 20px;
-}*/
 
-/*shadow on bootstrap component disabled by default \_<>_/*/
 
-/*.shadow1{
-	transition: box-shadow .3s;
-	border-radius:10px;
-    border: 1px solid #ccc;
-    background: #fff;
+h1 #headline{
+   	font-weight: normal;
+  	letter-spacing: .125rem;
+  	text-transform: uppercase;
 }
 
-.shadow1:hover {
-  box-shadow: 0 0 11px rgba(33,33,33,.2); 
-}*/
+.count-li {
+	background: hsl(146deg 100% 97%);
+	color: black;
+	margin-top: 10px;
+	color: black;
+	font-weight: bold;
+	text-align: center;
+	border: 1px solid black;
+	border-radius: 5px;
+  	display: inline-block;
+ 	list-style-type: none;
+}
+
+.count-li span {
+  display: block;
+  font-size: 1.5rem;
+  height: 30px;
+  width: 60px;
+}
+
+#countdown {
+	display: flex;
+	justify-content: space-around;
+}
+
+.dash{
+	margin-top: 25px;
+	padding: 1px;
+}

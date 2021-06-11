@@ -14,12 +14,16 @@ from django.contrib import messages
 
 # to manage auction datetime
 from django.utils import timezone
+from datetime import datetime
+import pytz
+
 from django.shortcuts import get_object_or_404
 
 # import stuffs for pagination
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-
+# local time zone
+localtz = pytz.timezone('Asia/Dhaka')
 
 def index(request):
 	if request.user.is_authenticated:
@@ -52,7 +56,9 @@ def logout_user(request):
 @login_required(login_url='/app/')
 def dashboard(request):
 	user = request.user
-	products_all = Product.objects.all().exclude(created_by=request.user).order_by('-creation_date')
+	
+	products_all = Product.objects.all().exclude(created_by=request.user).exclude(auc_end_time__lt = datetime.now(localtz)).order_by('auc_end_time', '-creation_date')
+
 	products_by_user = Product.objects.filter(created_by=request.user).order_by('-creation_date')
 
 	paginator = Paginator(products_all, 6)
@@ -86,14 +92,20 @@ def product_detail(request, id):
 	request.session['winner'] = 'yet to decide'
 	request.session['edit_access'] = False
 
+	
+
 	try:
 		p = Product.objects.get(id=id)
 	except Product.DoesNotExist:
 		return render(request, 'app/error_404.html')
 
+	local_dt = timezone.localtime(p.auc_end_time, pytz.timezone('Asia/Dhaka'))
+	print(local_dt)
+	print(datetime.now(localtz))
+	print(local_dt > datetime.now(localtz))
 	if p.created_by == request.user:
 		request.session['edit_access'] = True
-	bids = Auction.objects.filter(product=p)
+	bids = Auction.objects.filter(product=p).order_by('-amount')
 	context = {'product': p, 'bids': bids,}
 	if p.auc_end_time < timezone.now():
 		biggest_bid = Auction.objects.filter(product=p).aggregate(Max('amount'))
@@ -114,31 +126,51 @@ def product_edit(request, id):
 	except Product.DoesNotExist:
 		return render(request, 'app/error_404.html')
 	if p.created_by == request.user:
-
 		if request.method == 'POST':
 			form = ProductForm(request.POST, request.FILES, instance=p)
 			if form.is_valid():
 				form.save()
-				# p = form.save(commit=False)
-				# p.created_by = request.user
-				# p.save()
-				return redirect(reverse('dashboard'))
+				messages.add_message(request, messages.INFO,
+					f'Updates successfully applied!')
+				return redirect(reverse('product_detail', kwargs={'id': p.id}))
 		else:
 			form = ProductForm(instance=p)
 		return render(request, 'app/add_product.html', {'form': form})
 	return redirect(reverse('product_detail', kwargs={'id': p.id}))
 
+
 @login_required(login_url='/app/')
-def product_delete(request, p_id):
-	pass
+def product_delete(request, id):
+
+	# check if the product exists, if exists get an instance of it
+	try:
+		p = Product.objects.get(id=id)
+		product_name = p.name
+	except Product.DoesNotExist:
+		return render(request, 'app/error_404.html')
+
+	# check if someone else is trying to DELETE other than OP
+	if request.user == p.created_by:
+		p.delete()
+		messages.add_message(request, messages.WARNING,
+			f'Your Item [{product_name}] successfully deleted!')
+		return redirect(reverse('dashboard'))
+	
+	# throw error page if someone else is trying to DELETE other than OP  
+	return render(request, 'app/error_404.html')
+
 
 @login_required(login_url='/app/')
 def auction(request, p_id):
 	product = Product.objects.get(id=p_id)
+
+	# redirect if the OP of this item trying to bid
 	if request.user == product.created_by:
 		return redirect(reverse('product_detail', 
 			kwargs={'id': product.id,}
 			))
+
+	# if auction time still ON
 	if product.auc_end_time > timezone.now():
 		bid = Auction.objects.filter(product=product, placed_by=request.user)
 
@@ -146,6 +178,8 @@ def auction(request, p_id):
 			if bid:
 				form = AuctionForm(request.POST, instance=bid[0])
 				form.save()
+				messages.add_message(request, messages.INFO,
+					f'Updates have been applied!')
 			else:
 				form = AuctionForm(request.POST)
 				if form.is_valid():
@@ -153,6 +187,8 @@ def auction(request, p_id):
 					bid.product = product
 					bid.placed_by = request.user
 					bid.save()
+					messages.add_message(request, messages.INFO,
+						f'Your bid is placed! keep your eyes on this item.')
 			return redirect(reverse('product_detail', kwargs={'id': p_id}))
 
 		else:
@@ -161,6 +197,7 @@ def auction(request, p_id):
 			else:
 				form = AuctionForm()
 		return render(request, 'app/auction.html', {'form': form})
+	
 	else:
 		messages.add_message(request, messages.WARNING,
 			f'Bidding on This Item is Ended. See Results')
