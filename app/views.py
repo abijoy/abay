@@ -82,7 +82,9 @@ def add_product(request):
 			p = form.save(commit=False)
 			p.created_by = request.user
 			p.save()
-			return redirect(reverse('dashboard'))
+			messages.add_message(request, messages.INFO,
+				f'Your Product is up for bidding !!!')
+			return redirect(reverse('user_dashboard'))
 	else:
 		form = ProductForm()
 	return render(request, 'app/add_product.html', {'form': form})
@@ -154,7 +156,7 @@ def product_delete(request, id):
 		p.delete()
 		messages.add_message(request, messages.WARNING,
 			f'Your Item [{product_name}] successfully deleted!')
-		return redirect(reverse('dashboard'))
+		return redirect(reverse('user_dashboard'))
 	
 	# throw error page if someone else is trying to DELETE other than OP  
 	return render(request, 'app/error_404.html')
@@ -204,3 +206,23 @@ def auction(request, p_id):
 		return redirect(reverse('product_detail', 
 			kwargs={'id': product.id,}
 			))
+
+@login_required(login_url='/app/')
+def user_dashboard(request):
+	products_by_user = Product.objects.filter(created_by=request.user).order_by('-creation_date')
+	bidded_items = Auction.objects.filter(placed_by=request.user).order_by('product')
+	
+	paginator = Paginator(products_by_user, 6)
+	page = request.GET.get('page', 1)
+
+	try:
+		page_obj = paginator.page(page)
+	except PageNotAnInteger:
+		page_obj = paginator.page(1)
+	except EmptyPage:
+		page_obj = paginator.page(paginator.num_pages)
+
+	context = {'bidded_items':bidded_items, 'page_obj': page_obj}
+	return render(request, 'app/user_dashboard.html',context)
+	
+

@@ -1,9 +1,13 @@
-{% extends 'app/navbar.html' %}
-
+{% extends 'app/base.html' %}
 {% load crispy_forms_tags %}
 
-
+{% block title %}
+  Add Item - aBay
+{% endblock %} 
+  
 {% block content %}
+
+{% include 'app/navbar.html' %}
 
 		<!-- no more gooling how to center a div; here comes the flexbox -->
 		<div class="d-md-flex justify-content-center">

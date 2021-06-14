@@ -14,7 +14,7 @@ class RegisterUserForm(UserCreationForm):
 	    del self.fields['password1']
 	    del self.fields['password2']
 
-	email = forms.EmailField(required=True)
+	email = forms.EmailField(required=True, label='', widget=forms.EmailInput(attrs={'placeholder':'Email'}))
 
 	class Meta:
 		model = User 

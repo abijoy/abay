@@ -12,6 +12,9 @@ class Product(models.Model):
 	created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 	creation_date = models.DateTimeField(auto_now_add=True)
 
+	class Meta:
+		ordering = ['auc_end_time']
+
 	def __str__(self):
 		return self.name
 

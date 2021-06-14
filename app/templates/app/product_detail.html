@@ -1,10 +1,14 @@
-{% extends 'app/navbar.html' %}
+{% extends 'app/base.html' %}
+{% load crispy_forms_tags %}
 {% load tz %}
-{% load static %}
-{% csrf_token %}
+  
+{% block title %}
+  {{ product }} - aBay
+{% endblock %} 
 
 {% block content %}
-	
+
+{% include 'app/navbar.html' %}	
 
 
 <!-- <div class="container"> -->

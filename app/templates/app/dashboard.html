@@ -1,10 +1,15 @@
-
-{% extends 'app/navbar.html' %}
+{% extends 'app/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
-{% csrf_token %}
-
+{% block title %}
+  Dashboard - aBay
+{% endblock %} 
+  
 {% block content %}
+
+{% include 'app/navbar.html' %}
+
 
 	<div class="row">
 		<div class="col-md-9">
@@ -60,6 +65,7 @@
 			<div class="loading" style="display: none; text-align: center;">
 			    <img class="loader" src="{% static 'media/loading2.gif' %}">
 			</div>
+
 
 		</div>
 
