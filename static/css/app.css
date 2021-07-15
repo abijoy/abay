@@ -107,3 +107,7 @@ h1 #headline{
 	margin-top: 25px;
 	padding: 1px;
 }
+
+.info-bid {
+	display: none;
+}

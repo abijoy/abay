@@ -165,7 +165,7 @@ def product_delete(request, id):
 @login_required(login_url='/app/')
 def auction(request, p_id):
 	product = Product.objects.get(id=p_id)
-
+	min_bid = product.min_bid_price
 	# redirect if the OP of this item trying to bid
 	if request.user == product.created_by:
 		return redirect(reverse('product_detail', 
@@ -179,13 +179,22 @@ def auction(request, p_id):
 		if request.method == 'POST':
 			if bid:
 				form = AuctionForm(request.POST, instance=bid[0])
-				form.save()
+				bid = form.save(commit=False)
+				if bid.amount < product.min_bid_price:
+					messages.add_message(request, messages.WARNING,
+						f'Your bid must be greater than {product.min_bid_price}')
+					return redirect(reverse('auction', kwargs={'p_id': p_id}))
 				messages.add_message(request, messages.INFO,
 					f'Updates have been applied!')
+				bid.save()
 			else:
 				form = AuctionForm(request.POST)
 				if form.is_valid():
 					bid = form.save(commit=False)
+					if bid.amount < product.min_bid_price:
+						messages.add_message(request, messages.WARNING,
+							f'Your bid must be greater than {product.min_bid_price}')
+						return redirect(reverse('auction', kwargs={'p_id': p_id}))
 					bid.product = product
 					bid.placed_by = request.user
 					bid.save()
@@ -196,9 +205,11 @@ def auction(request, p_id):
 		else:
 			if bid:
 				form = AuctionForm(instance=bid[0])
+				request.session['mode'] = 'Update'
 			else:
 				form = AuctionForm()
-		return render(request, 'app/auction.html', {'form': form})
+				request.session['mode'] = 'Add'
+		return render(request, 'app/auction.html', {'form': form, 'min_bid': min_bid})
 	
 	else:
 		messages.add_message(request, messages.WARNING,
