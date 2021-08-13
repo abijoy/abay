@@ -57,7 +57,7 @@ def logout_user(request):
 def dashboard(request):
 	user = request.user
 	
-	products_all = Product.objects.all().exclude(created_by=request.user).exclude(auc_end_time__lt = datetime.now(localtz)).order_by('auc_end_time', '-creation_date')
+	products_all = Product.objects.all().order_by('auc_end_time', '-creation_date')
 
 	products_by_user = Product.objects.filter(created_by=request.user).order_by('-creation_date')
 
