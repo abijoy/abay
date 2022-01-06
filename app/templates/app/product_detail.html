@@ -67,7 +67,11 @@
 			    	<a href="{% url 'product_edit' product.id %}" class="btn btn-outline-primary">Edit</a>
 			    	<a href="{% url 'product_delete' product.id %}" class="btn btn-outline-danger">DELETE</a>
 			    {% else %}
-			    	<a href="{% url 'auction' product.id %}" class="btn btn-outline-success d-flex justify-content-center" >Place your bid</a>
+					{% if product.is_bid_running %}
+						<a href="{% url 'auction' product.id %}" class="btn btn-outline-success d-flex justify-content-center" >Place your bid</a>
+					{% else %}
+						<a href="{% url 'auction' product.id %}" class="disabled btn btn-outline-success d-flex justify-content-center" >Place your bid</a>
+					{% endif %}
 			    {% endif %}
 		    </div>
 		</div>

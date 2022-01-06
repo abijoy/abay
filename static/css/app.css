@@ -111,3 +111,26 @@ h1 #headline{
 .info-bid {
 	display: none;
 }
+
+
+
+
+  /* Make the tag position relative to the figure */
+
+  .card {
+	  position: relative;
+  }
+
+  .status{
+	  background-color: orange;
+	  position: absolute;
+	  padding: 0px 3px 0px 3px;
+	  top: 10px;
+	  left: 0px;
+	  border-top: 1px solid black;
+	  border-right: 1px solid black;
+	  border-bottom: 1px solid black;
+	  font-weight: bold;
+  }
+  
+  

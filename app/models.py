@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from django.utils import timezone
+from datetime import datetime
 
 class Product(models.Model):
 	name = models.CharField(max_length=200, verbose_name='Product Name',)
@@ -14,6 +15,10 @@ class Product(models.Model):
 
 	class Meta:
 		ordering = ['auc_end_time']
+	
+	@property
+	def is_bid_running(self):
+		return self.auc_end_time > timezone.now()
 
 	def __str__(self):
 		return self.name

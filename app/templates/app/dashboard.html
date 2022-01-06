@@ -1,6 +1,7 @@
 {% extends 'app/base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load tz %}
 
 {% block title %}
   Dashboard - aBay
@@ -36,14 +37,21 @@
 
 			        <div class="col-md-4">
 			        	<a href="{% url 'product_detail' p.id %}" class="cardLink">
-				        <div class="card shadow1" style="width: 18rem; margin-bottom: 20px;">
+				        <div class="card shadow1" style="margin-bottom: 20px;">
 
 				        	{% if p.photo %}
 				        		<img class="card-img-top" src="{{ p.photo.url }}" style="height: 200px;">
 				        	{% endif %}
 
+							{% if p.is_bid_running %}
+								<span class="status">Running</span>
+							{% else %}
+								<span class="status" style="background-color: red; color: white;">Ended</span>
+							{% endif %}
+
 				          <div class="card-body ">
 				            <h5 class="card-title"><b>{{ p }}</b></h5>
+							<!-- <p class="card-text">{{ p.auc_end_time }}</p> -->
 				            <p class="card-text">{{ p.description  }}</p>
 				            <p class="card-text"><i>Bid starts from</i>: Tk. <span class="text-success"><b>{{ p.min_bid_price|floatformat  }}</b></span></p>
 				            <!-- <a href="{% url 'product_detail' p.id %}">Show More</a> -->

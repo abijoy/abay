@@ -57,7 +57,7 @@ def logout_user(request):
 def dashboard(request):
 	user = request.user
 	
-	products_all = Product.objects.all().order_by('auc_end_time', '-creation_date')
+	products_all = Product.objects.all().order_by('-auc_end_time',)
 
 	products_by_user = Product.objects.filter(created_by=request.user).order_by('-creation_date')
 
@@ -71,7 +71,8 @@ def dashboard(request):
 	except EmptyPage:
 		page_obj = paginator.page(paginator.num_pages)
 
-	context = {'user': user, 'products_by_user': products_by_user, 'page_obj': page_obj}
+	curr_datetime = datetime.now()
+	context = {'user': user, 'products_by_user': products_by_user, 'page_obj': page_obj, 'curr_datetime': curr_datetime}
 	return render(request, 'app/dashboard.html',context)
 
 @login_required(login_url='/app/')
@@ -220,7 +221,7 @@ def auction(request, p_id):
 
 @login_required(login_url='/app/')
 def user_dashboard(request):
-	products_by_user = Product.objects.filter(created_by=request.user).order_by('-creation_date')
+	products_by_user = Product.objects.filter(created_by=request.user).order_by('-auc_end_time', '-creation_date')
 	bidded_items = Auction.objects.filter(placed_by=request.user).order_by('product')
 	
 	paginator = Paginator(products_by_user, 6)
