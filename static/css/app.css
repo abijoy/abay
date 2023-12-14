@@ -1,0 +1,136 @@
+
+.nav-link:visited, .nav-link:active, .nav-link:focus, .nav-link:hover{
+	background-color: #d3d3d3;
+	border-radius: 8px;
+}
+
+table,th,td {
+	border: 1px solid #303030;
+	padding: 8px 8px 8px;
+
+}
+
+.totop {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+
+}
+.totop a {
+    display: none;
+    background: hsl(146deg 100% 97%);
+    padding: 8px 15px;
+    border: 1px solid hsl(159deg 26% 85%);
+    border-radius: 4px;
+    color: #303030;
+}
+
+.totop a:hover {
+	text-decoration: none;
+}
+
+.loader {
+	height: 20px;
+	width: 20px;
+}
+
+.cardLink {
+	color: #303030;
+	
+}
+
+.cardLink:hover {
+	text-decoration: none;
+	color: black;
+}
+
+.warning {
+	display: inline-block;
+    background: hsl(29deg 74% 95%);
+    padding: 8px 15px;
+    border-left: 5px solid hsl(23deg 83% 64%);
+}
+
+.info {
+	display: inline-block;
+    background: hsl(146deg 100% 97%);
+    padding: 8px 15px;
+    border-left: 5px solid hsl(159deg 63% 63%);
+}
+
+.bid-table-info {
+	display: inline-block;
+    background: hsl(146deg 100% 97%);
+    padding: 8px 15px;
+    border-left: 5px solid hsl(159deg 63% 63%);
+}
+
+.winner {
+	display: inline-block;
+	border: 1px solid hsl(159deg 63% 63%);
+	padding: 5px 5px 5px;
+}
+
+
+h1 #headline{
+   	font-weight: normal;
+  	letter-spacing: .125rem;
+  	text-transform: uppercase;
+}
+
+.count-li {
+	background: hsl(146deg 100% 97%);
+	color: black;
+	margin-top: 10px;
+	color: black;
+	font-weight: bold;
+	text-align: center;
+	border: 1px solid black;
+	border-radius: 5px;
+  	display: inline-block;
+ 	list-style-type: none;
+}
+
+.count-li span {
+  display: block;
+  font-size: 1.5rem;
+  height: 30px;
+  width: 60px;
+}
+
+#countdown {
+	display: flex;
+	justify-content: space-around;
+}
+
+.dash{
+	margin-top: 25px;
+	padding: 1px;
+}
+
+.info-bid {
+	display: none;
+}
+
+
+
+
+  /* Make the tag position relative to the figure */
+
+  .card {
+	  position: relative;
+  }
+
+  .status{
+	  background-color: orange;
+	  position: absolute;
+	  padding: 0px 3px 0px 3px;
+	  top: 10px;
+	  left: 0px;
+	  border-top: 1px solid black;
+	  border-right: 1px solid black;
+	  border-bottom: 1px solid black;
+	  font-weight: bold;
+  }
+  
+  

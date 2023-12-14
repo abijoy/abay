@@ -4,6 +4,6 @@ __pycache__/
 *.pyc
 abay/__pycache__/
 app/__pycache__/
-static/
+# static/
 db.sqlite3
 .env
