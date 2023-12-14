@@ -22,7 +22,9 @@ class Product(models.Model):
 	
 	@property
 	def is_bid_running(self):
-		return self.auc_end_time > timezone.now()
+		from datetime import timedelta
+		local_dt = timezone.now() + timedelta(hours=6)
+		return self.auc_end_time > local_dt
 
 	def __str__(self):
 		return self.name
