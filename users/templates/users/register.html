@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div>
+    <h2>Register</h2>
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            {{ form.errors }}
+        </div>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <input class="btn btn-primary" type="submit" value="Register" style="width: 100%;">
+    </form>
+    Go back to <a href="{% url 'dashboard' %}"> Dashboard </a>
+</div>
+{% endblock %}

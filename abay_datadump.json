@@ -1,0 +1,1616 @@
+[
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "app",
+        "model": "product"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "app",
+        "model": "auction"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "15hwvbw0wgt0k1tuzokbsxvsewf752ql",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQAP-FsyHyph69-w3NLrtI1UBS2pPx3w1JD3qdmcxbzLBvZd47r_NC4iKsOP0yhPTkOgQ9oN6bTK1u64JyJPKwXd4a8et6tH-DAr2M7cRnnbzPlAmIcjYMMWi0iThoRgxORe-Nis6kKXuVXMwGbAxko7YoPl8TZTh9:1llrJi:IxvjdKJTRzycCwmHYQmkOZBNF4_09Ot8VEAwDkPsCQg",
+        "expire_date": "2021-06-09T11:03:14.461Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "2m1k1b0m1iwjzknjxf8m37o6r4sn2vn8",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2pDA1DK4dO8ZyMwAUjWQlHbVeHdt0oVu_3vvbyrQupSw9jSHKaqLMoM6_Y5M8kx1J_FB9d60tLrME-td0Qft-tZiel0P9--gUC_fGtANMBI4ECDvYUQ8A3iJCCzMlllQspHkXHQDSbJgKBu0mC0DWvX-APjlOA8:1llYKs:ghDE7uGehdcqX_nvzxtsbILMw3tzRqUdK2sIHKJI7oM",
+        "expire_date": "2021-06-08T14:47:10.362Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "3cnhgg6vsn97vsxosyxzl5c32m62sqd1",
+    "fields": {
+        "session_data": ".eJxVjksOgzAMRO-SdYX4pTGsqu57hsiJHUiBgAioi6p3b5BYtMvxPD_NW2jct17vkVftSbSiAHH5PRq0A4ejoSeGbs7sHLbVm-xAsrON2WMmHu8n-yfoMfbpm-uiImkUFGht04AtXYPWyBRYSpI5IilloXaqKh25HKrawRUIyUFpqiR9-RB4Ta64-IHjUuSgbt2EfkyjpgQw-U0nPccoWodj5M8X1o5LRQ:1lqkWS:e7REkZ2xTEHwL4ITlxByS_6MaNCdoaCXbEpknHGGl7c",
+        "expire_date": "2021-06-22T22:48:36.908Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "4lu9tqklj266gclgw34r35yw4mykbkza",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAURK_SsDakLUWoS_eegXz4H4saSIDGGOPdpUkXupx5M-_NDKx1MWuhbAKyExs0O_yWFtyd4kbwBvGauEux5mD5NuE7LfySkB7nffsnWKAs7U3TIFBapQdwbp61G_0MzsoWSEqUPQAq5fTklRg9-l6LyeujRkCvRyua9BlipNxcL6pdTR2SC0gNEIZqmpZKYaeaV_p8AUFPSEc:1lquYJ:30M5dr8KNPBGiy_Jl_rSH7WuNNYF2Xz-0uSkhEgsmo0",
+        "expire_date": "2021-06-23T09:31:11.354Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "4v1ouphlc8dxhd8nqd6eu8s4dluavvdh",
+    "fields": {
+        "session_data": ".eJxVjsEKwjAQRH-l5Cyh6TYkevTuN4RsdmujkkKSIiL-uyn0oLdh3swwb-H8Wme3Fs4ukjgJJQ6_Hvpw57QBuvl0XWRYUs0R5RaROy3yshA_znv2b2D2ZW5trwFhJBosozIDKmCtEYJF3RSi8QGUVmzDhMYw9Gb02tAE0Fs9HLdXz5gS57b14trVpSMOkbgBplidD4FLEaeaV_58AckdRvg:1lrICl:UoqRYOL4RYKRUqpZgRWVQ7KYdqVJxtjRP0ioUyETWSk",
+        "expire_date": "2021-06-24T10:46:31.417Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "7ihbfa17avy7waubhalyypqefi890fo9",
+    "fields": {
+        "session_data": ".eJxVjEEOgjAQRa9CujYEaIuUpXvP0ExnplIlbUJLjDHeXUhY6Pa_999bWFjLZNfMiw0kRtEacfodHeCD407oDvGWakyxLMHVu1IfNNfXRDxfDvcvMEGetrdR1BjoB9YKCTRK8N5wx1KqoaPGGcnaD6rtdYuaJXmPRFr6s3TGg3Zb9Bli5GVrvbhUJVXEGIg3wBSKBUTOWYwe5syfL3yPSI0:1lrkbE:8TQnzLTvlNLASKOGFso-ocXpDRKD9499ypsO1wrY4zo",
+        "expire_date": "2021-06-25T17:05:40.353Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "7xza5idtqkhi07iooroaevnpc0rnkd1j",
+    "fields": {
+        "session_data": "e30:1llYE8:vUL7SdC7DG-oo8-_5LP4r4CksFsEhQQ4ggiV-YCg6mA",
+        "expire_date": "2021-06-08T14:40:12.786Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "bzyvrm1hv90g6vml0clx3s1e088xsvi2",
+    "fields": {
+        "session_data": "e30:1llUr6:5U5pjFvbg2-njB9NgaTwWqSvFhhE36pnLpM6u3ElHbg",
+        "expire_date": "2021-06-08T11:04:12.018Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "d2mjmzp5rxka7ef9hpb4cidjdt04cnq4",
+    "fields": {
+        "session_data": ".eJxVjssOgyAURP-FdWN4KKCrpvt-A7nARakWjWi6aPrvxcRFu505czJvYmDfBrNnXE30pCOckctvaMGNmI7GPyD1c-XmtK3RVgdSnW2u7rPH6Xayf4IB8lDWAZm2InAegtKhRYFOApUasAGOJaWiQa-FZL5mylvlahFEYWkrPVpZpK-YEq7FlZc4Yl4Y1eraPyFO5dSzAOjjZsA5zJl0AaaMny_KoksN:1lrlQ5:nfIM6DEVbvlEbvFc70ehzY2oOYPkoZPtgpWGj7QbcHE",
+        "expire_date": "2021-06-25T17:58:13.646Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "irxry07op8eaoo0lvs3xzlaqveeqbpbx",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQRO_iGlnxD68p6TmDtd61cQA5UpxUiLuTSCmgnHlv5i0irkuNa89zHFlchAJx-i0T0jO3nfAD232SNLVlHpPcFXnQLm8T59f1cP8OKva6rbNVhl3yoJAoBCBdAlJyW8jOsRsQ2XsCW7zRhcsAxhY4AyMX0MmIzxctXzkS:1lrI3n:4NojRWYSwLZGEN6SQh42QQMnI4KoClxI5oqGItxnPtQ",
+        "expire_date": "2021-06-24T10:37:15.718Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "kdehpsjo5zl12kv0ng3anwrqkg4l7c1d",
+    "fields": {
+        "session_data": ".eJxVjsEKwjAQRH-l5CyhaRoSe_TuN4Td7NZGSwpNioj476bQg96GeTPDvIWHrUx-y7z6SGIQSpx-PYTw4LQDukO6LTIsqawR5R6RB83yuhDPlyP7NzBBnmobjEbdE3WOUdkOlWZjUAeHpipEC0Ero9iFEa1l3doejKVR69aZ7ry_esaUeK1bLy5NWRriEIkrYIrFQwicsxhGmDN_vg_OR0M:1ls1hw:M22ZNIZItjdDGaD82yJji0J7mUN-YuVEQ5var-9k4Ls",
+        "expire_date": "2021-06-26T11:21:44.806Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ke3kphllak2j7ddn6w17hzm0x2jxllnk",
+    "fields": {
+        "session_data": ".eJxVjkEOgyAQRe_CuiECiuiqcd8zkIEZKq1iIpoumt69mLhot--_eZk3s7Bvo90zrTYi65kU7PILHfgnpWPBB6T7wv2StjU6fij8XDO_LUjTcLp_gRHyWK4DCeNUkDKE1oSOFHkNlTZADUgqtFINoVFaYC1adK2vVVDFrTqN5HSJvmJKtJbWTNcZ4lRemQsmjJsF7yln1geYMn2-7zdHqQ:1lrlEl:--HomuO76FNbQVLTHksjXEqTvW89guxTadQ2W9PmaBQ",
+        "expire_date": "2021-06-25T17:46:31.680Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "lkrrlqi0i6vr7ocozpe77vq2rytpw6vf",
+    "fields": {
+        "session_data": "e30:1llUvD:UOQIGfqJPI5LPgkQb75tNZtTbEfAqV_mz0YMtqaOLW8",
+        "expire_date": "2021-06-08T11:08:27.597Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "noszk4g453wxbpo67s6kax79h18lrc0a",
+    "fields": {
+        "session_data": ".eJxVzEEOgjAQheGrkK4NEShtYeneMzTTmalUSZvQEmOMdxcSFrp9_8v3FhbWMtk182IDiVFIcfrdHOCD4x7oDvGWakyxLMHV-6U-aq6viXi-HN8_YII87ezA5xaV8uQJiLzvGIxunURi3bJzum-MUl1j-g4Hrxrsje9AGk3StNJt6DPEyMtmvbhUJVXEGIi3wBSKBUTOWYwe5syfL1UVR_0:1lpaQL:RRshdlivHZPk5dae03apNrS1GACOLGIqgrdu5IBnaBw",
+        "expire_date": "2021-06-19T17:49:29.094Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "q5bkxah16o2k40gdj6ss1b25xhqso3zr",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRa_SsDakLVBLl-49AxlmBosamhQaY4x3lyYudPvf--8lHGxldlvm1UUSk-isOPyOHvDGaSd0hXRZJC6prNHLXZFfmuV5Ib6fvu5fYIY817fV1FoYRjYaCQwqCMFyz0rpsafWW8UmjLobTIeGFYWAREaFo_I2gPE1-ogp8VpbTy5NWRpijMQVMMXiAJFzFlNZN35_ADSjSEI:1lrQnN:9xKcLCjnAbLCQkhM3BepXcZlJdi7DnS67_mesETe6PY",
+        "expire_date": "2021-06-24T19:56:53.799Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "qu8apdg7dycwk79hlavnbggqjcueo5kf",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQRO_iGlnxD68p6TmDtd61cQA5UpxUiLuTSCmgnHlv5i0irkuNa89zHFlchAJx-i0T0jO3nfAD232SNLVlHpPcFXnQLm8T59f1cP8OKva6rbNVhl3yoJAoBCBdAlJyW8jOsRsQ2XsCW7zRhcsAxhY4AyMX0MmIzxctXzkS:1lql7d:bEfYysvFKjPh8gloU-fPoZMEKL3iF-hYlWfCC8SkcbA",
+        "expire_date": "2021-06-22T23:27:01.895Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "qua7tlowpr9niqcbgvxz2izvr45co5vd",
+    "fields": {
+        "session_data": ".eJxVjEEOgjAQRa9CujYEaIuUpXvP0ExnplIlbUJLjDHeXUhY6Pa_999bWFjLZNfMiw0kRtEacfodHeCD407oDvGWakyxLMHVu1IfNNfXRDxfDvcvMEGetrdR1BjoB9YKCTRK8N5wx1KqoaPGGcnaD6rtdYuaJXmPRFr6s3TGg3Zb9Bli5GVrvbhUJVXEGIg3wBSKBUTOWYwe5syfL3yPSI0:1lrh4h:Il_7ROzIIvH_Q2VQqr3tVAvsvrfmAhgsFgAPfJ1KHks",
+        "expire_date": "2021-06-25T13:19:51.488Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "rfpmrk9qsuujyr4gl5ykgimwdlrqff68",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRa_SsDakLVBLl-49AxlmBosamhQaY4x3lyYudPvf--8lHGxldlvm1UUSk-isOPyOHvDGaSd0hXRZJC6prNHLXZFfmuV5Ib6fvu5fYIY817fV1FoYRjYaCQwqCMFyz0rpsafWW8UmjLobTIeGFYWAREaFo_I2gPE1-ogp8VpbTy5NWRpijMQVMMXiAJFzFlNZN35_ADSjSEI:1lrQLT:wWrANVUYQP5B385ATQq5os0EvBlR5pgxJ-oFqnHdxGM",
+        "expire_date": "2021-06-24T19:28:03.052Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "rnhwf3r6z716nhuwa4lkucugi9fp8k8l",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQRO_iGlnxD68p6TmDtd61cQA5UpxUiLuTSCmgnHlv5i0irkuNa89zHFlchAJx-i0T0jO3nfAD232SNLVlHpPcFXnQLm8T59f1cP8OKva6rbNVhl3yoJAoBCBdAlJyW8jOsRsQ2XsCW7zRhcsAxhY4AyMX0MmIzxctXzkS:1lr1Qz:bm6AQz-P99g0ZwSdVGwTNVANjywEfAINi4xe0goJ49g",
+        "expire_date": "2021-06-23T16:52:05.800Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "tmw8hjk0nv69ujqkfsmiobuknkw0kh8s",
+    "fields": {
+        "session_data": ".eJxVjEEOgjAUBa9CujYEKBRw6d4zkN_-V6mSNqElxhjvbklY6PbNvHmLibY0T1vEOjkWZ9HU4vQ7ajIP-J3wnfwtlCb4tDpd7kp50FheA2O5HO5fYKY457dFPWhpm8bafrAjJIyiSg2EjhrktZIdeJCq5rbuWfemlVZmtxoVQ6scfTrvsebWC6lIoWAYx8gA7NJExiBGcba0RHy-fxRIWg:1lrRUe:rcShNcc64UwTdZOG7kYbeF-uidCZS8g3nzl2zJVrHoM",
+        "expire_date": "2021-06-24T20:41:36.011Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "u5zxr6uwm8b6vamqrm5qz8pmqhy0rwg3",
+    "fields": {
+        "session_data": ".eJxVjDsOwyAQBe9CHSE-NuCU6X0GtLBLcBKBZOwqyt2DJRdJOzPvvZmHfct-b7T6BdmVKckuvzBAfFI5DD6g3CuPtWzrEviR8NM2Plek1-1s_w4ytNzXiaQLOimVknVpIk3RgDAOaARFnQo9EjptJA7SYrBx0En3VkwGKRj2-QItCzja:1lrQS6:80bZQe44yLnFGXWnf8A0hIVd0U7xBUJ7MWbOkL_rROI",
+        "expire_date": "2021-06-24T19:34:54.773Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "w1z8udo3vcw4n9kcrpenujvo6v3j815p",
+    "fields": {
+        "session_data": ".eJxVjksOgzAMRO-SdYX4pTGsqu57hsiJHUiBgAioi6p3b5BYtMvxPD_NW2jct17vkVftSbSiAHH5PRq0A4ejoSeGbs7sHLbVm-xAsrON2WMmHu8n-yfoMfbpm-uiImkUFGht04AtXYPWyBRYSpI5IilloXaqKh25HKrawRUIyUFpqiR9-RB4Ta64-IHjUuSgbt2EfkyjpgQw-U0nPccoWodj5M8X1o5LRQ:1lqkZ3:RnYzirXPjT5k9UYYbS6Ya4TXOeOGDz5O92e0mMMaNkU",
+        "expire_date": "2021-06-22T22:51:17.131Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "x48b20ilnw9h4kcwvfum2wmm8zz9ziqj",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQBe_iGlnxdx1Kes5gedcbHEC2FCcV4u4QKQW0b2beS8S0rSVunZc4Z3EWSovT74iJHlx3ku-p3pqkVtdlRrkr8qBdXlvm5-Vw_w5K6uVbm5CAR4VgvR-c1-RAowlGOW9U4MkBZTcCoDZ6QEXWWctAExOgDx7E-wPTRDb7:1llY7L:lyxXjxLtrtrv2N6R-O-R54WXc4nRKan3b4gEqFvGYXA",
+        "expire_date": "2021-06-08T14:33:11.239Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "xhhwuexbjas3ax9cel6vyb9b5tneun65",
+    "fields": {
+        "session_data": "e30:1llUuK:PDzuz0MLGdh6WfLXoAVX3si7N-HCF5W6wpGjuSk2K3M",
+        "expire_date": "2021-06-08T11:07:32.267Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "yugmtowehbnwy0jvtv3ryd6ygvd6hd19",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAURK_SsDakLUVol-49A_nwPxZtICk0xhjvLk260OXMm3lvZmArs9kyrSYgm1in2em3tOAeFHeCd4i3xF2KZQ2W7xN-0MyvCWm5HNs_wQx5rm8aOoHSKt2Bc-OoXe9HcFbWQFKibAFQKacHr0Tv0bdaDF6fNQJ63VtRpc8QI63V9aLSlNQguYBUAWEopmopZzZ5WDJ9volASJI:1lrQjb:nzpe0M9gSeurtsQP-8E2P1h28idNRk_-mkiHqZ9aT8s",
+        "expire_date": "2021-06-24T19:52:59.461Z"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can view permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can add group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can change group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can view group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can view user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "view_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can view content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can add session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can change session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can view session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add product",
+        "content_type": [
+            "app",
+            "product"
+        ],
+        "codename": "add_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change product",
+        "content_type": [
+            "app",
+            "product"
+        ],
+        "codename": "change_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete product",
+        "content_type": [
+            "app",
+            "product"
+        ],
+        "codename": "delete_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can view product",
+        "content_type": [
+            "app",
+            "product"
+        ],
+        "codename": "view_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can add auction",
+        "content_type": [
+            "app",
+            "auction"
+        ],
+        "codename": "add_auction"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can change auction",
+        "content_type": [
+            "app",
+            "auction"
+        ],
+        "codename": "change_auction"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can delete auction",
+        "content_type": [
+            "app",
+            "auction"
+        ],
+        "codename": "delete_auction"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can view auction",
+        "content_type": [
+            "app",
+            "auction"
+        ],
+        "codename": "view_auction"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "!Fm4cDFg4Y7fQ1lAbf7u8XyRJct5sVCFzBzMPZMFw",
+        "last_login": "2021-06-11T20:16:52.281Z",
+        "is_superuser": false,
+        "username": "me@mail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-05-25T09:43:08.961Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "!Y4Ll4t97OifYAVdnmR9SzibxS2jQ2jyYxOyWioGF",
+        "last_login": "2021-05-26T07:26:55.731Z",
+        "is_superuser": false,
+        "username": "he@mail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-05-25T09:49:10.868Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$TZMjU3Xl5GRucfSVx0a4Tp$5vdNFZPQfzCRYC/MQXiOOhdgMtfcaPJy3prCz1u+Z6c=",
+        "last_login": "2021-06-11T18:38:01.215Z",
+        "is_superuser": false,
+        "username": "she@mail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-05-25T09:52:54.430Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "!H8UiyRtE0MGQ0v9tEe1qBf5UmjUptOI8dk7Mhw4I",
+        "last_login": "2021-06-05T17:46:48.293Z",
+        "is_superuser": false,
+        "username": "mrkrajib00@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "1234",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-05-25T11:04:11.568Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+        "password": "!0KaOYpJGinZk7q6VZvO46qctRfjJ9QLYBnG16nDa",
+        "last_login": "2021-05-25T14:44:00.655Z",
+        "is_superuser": false,
+        "username": "mrkrajib001@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "1234",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-05-25T11:07:32.015Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+        "password": "!Nu7NbgLnN149kXbbP3PfHKCVaVbwadBFEDBUONH7",
+        "last_login": "2021-05-25T11:08:27.690Z",
+        "is_superuser": false,
+        "username": "mrkrajib002@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "1234",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-05-25T11:08:27.322Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+        "password": "!6Ennnn7DwViBXwmW97wTBu8isx90Unu7LT29A8oV",
+        "last_login": "2021-05-25T11:09:08.791Z",
+        "is_superuser": false,
+        "username": "mrkrajib003@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "1234",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-05-25T11:09:08.455Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 8,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$BR39dUcnkQo6QhLaRWs6LF$qkmQFB2Jp3BGVcA/jaqw4SOJTMV/qeYIwh80mwHyyow=",
+        "last_login": "2021-05-25T11:11:36.233Z",
+        "is_superuser": false,
+        "username": "mrkrajib004@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-05-25T11:11:35.104Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 9,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$yS4UfJcZLh0xaVBCM59Hra$dR3h0cYzquRQ0qXCYprMX0LzVVIZIwVe+O1gRyiLYj4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "sfdsf@mail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-05-25T11:24:12.543Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 10,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$13OUdD6zo37xnP0NfhMSYy$Wm+xgH8kUZHlF2zADRhRmupe/D12hBvhR3XKW9Zlv/Q=",
+        "last_login": "2021-05-25T11:32:52.981Z",
+        "is_superuser": false,
+        "username": "mrkrajib005@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-05-25T11:32:52.179Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 11,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$RsGTHOFOU1hFIbA5tZJrQ8$y+p+bW5S/pyEgrSs+QLaMU0WIvCxNE0LHfyE9GWBBQU=",
+        "last_login": "2021-05-25T22:32:02.876Z",
+        "is_superuser": false,
+        "username": "mrkrajib006@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-05-25T11:40:29.798Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 12,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$bMvvb568qmPGfZbozPaWlc$OE4YNngVKdPvgp1fyufBZJ6w5FsSk2tUN6gliLxUYk8=",
+        "last_login": "2021-05-25T14:54:27.752Z",
+        "is_superuser": false,
+        "username": "ashislam77@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-05-25T11:49:28.647Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 13,
+    "fields": {
+        "password": "!hWlszc8UPqPMdq1z1JJpsV3p3m4pYyeg9Eocnsr0",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "no@mail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-05-25T14:46:03.097Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 14,
+    "fields": {
+        "password": "!ca6Do3heYrIDmJAmFo01SRJj9JVtlFT3mxIPdGGu",
+        "last_login": "2021-05-25T14:47:10.247Z",
+        "is_superuser": false,
+        "username": "nou@mail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-05-25T14:46:28.965Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 15,
+    "fields": {
+        "password": "!9Cv6Ct9fb3jtpHOL0ZzThdXCJvjAiFEuDyNIGhZ7",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "nou1@mail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-05-25T14:48:14.441Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 16,
+    "fields": {
+        "password": "!Afr8O4AR2q9yNzozWojUAFuXZ1V388jKo2ovDu6Q",
+        "last_login": "2021-05-25T14:52:20.250Z",
+        "is_superuser": false,
+        "username": "mrkrajib008@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-05-25T14:52:19.987Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 17,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$d3rBhSrWGyylRyCPcCubkj$CbIdteW7Qqt8g8FLAbBcrFH+qQwB0B38vjpLVN6/W1M=",
+        "last_login": "2021-05-25T15:51:41.859Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2021-05-25T15:51:04.975Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 18,
+    "fields": {
+        "password": "!1ShdomBhZv6J6KNd8a9FTDypO2JfITTeIlMO9HCl",
+        "last_login": "2021-06-11T12:47:42.541Z",
+        "is_superuser": false,
+        "username": "spikesp1088@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-06-01T18:51:06.647Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 19,
+    "fields": {
+        "password": "!UPS8dv5vW4UuDIS7nnhiJN14fxEa4TglYiWoPtkV",
+        "last_login": "2021-06-11T20:16:40.048Z",
+        "is_superuser": false,
+        "username": "spikesp1087@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-06-01T20:04:14.946Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 20,
+    "fields": {
+        "password": "!eASK4V2hqZg3Q7i4ZFaTMSXEqfutbj61ArYjMg7Z",
+        "last_login": "2021-06-02T17:35:44.464Z",
+        "is_superuser": false,
+        "username": "abc@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-06-02T09:35:57.047Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 21,
+    "fields": {
+        "password": "!CkbqQfC5VJnWfy1Jt4K5NuWpsKCgbVbzRKCvjDvL",
+        "last_login": "2021-06-11T17:46:56.679Z",
+        "is_superuser": false,
+        "username": "mdalaminbijoy3@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-06-05T17:05:56.829Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 22,
+    "fields": {
+        "password": "!Ozvt9gJSiyPiL7bZHG1W25QiMybm84vDstNml5g4",
+        "last_login": "2021-06-11T12:58:24.401Z",
+        "is_superuser": false,
+        "username": "shuvokkr@gmail.com",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-06-11T12:58:24.035Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "app.product",
+    "pk": 1,
+    "fields": {
+        "name": "Laptop",
+        "description": "thinkpad e560 for sale!",
+        "photo": "uploads/laptop.jpeg",
+        "min_bid_price": "200.00",
+        "auc_end_time": "2021-06-05T11:30:00Z",
+        "created_by": [
+            "me@mail.com"
+        ],
+        "creation_date": "2021-06-08T18:27:25.354Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 2,
+    "fields": {
+        "name": "Redmi Note 7",
+        "description": "gonna sell this phone",
+        "photo": "uploads/2021-06-02/redmi-note-7.jpeg",
+        "min_bid_price": "800.00",
+        "auc_end_time": "2021-06-15T23:38:00Z",
+        "created_by": [
+            "me@mail.com"
+        ],
+        "creation_date": "2021-06-08T18:27:25.354Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 4,
+    "fields": {
+        "name": "Charger 18W",
+        "description": "fast charger",
+        "photo": "",
+        "min_bid_price": "100.00",
+        "auc_end_time": "2021-05-26T01:04:00Z",
+        "created_by": [
+            "he@mail.com"
+        ],
+        "creation_date": "2021-06-08T18:27:25.354Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 6,
+    "fields": {
+        "name": "Table Lamp",
+        "description": "Nice table lamp for sell!!!",
+        "photo": "",
+        "min_bid_price": "150.00",
+        "auc_end_time": "2021-05-31T02:04:00Z",
+        "created_by": [
+            "mrkrajib001@gmail.com"
+        ],
+        "creation_date": "2021-06-08T18:27:25.354Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 7,
+    "fields": {
+        "name": "Air Conditioner",
+        "description": "LG used air conditioner 1.5 Ton",
+        "photo": "",
+        "min_bid_price": "123.00",
+        "auc_end_time": "2021-06-02T13:36:00Z",
+        "created_by": [
+            "he@mail.com"
+        ],
+        "creation_date": "2021-06-08T18:27:25.354Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 9,
+    "fields": {
+        "name": "celing fan",
+        "description": "fresh fan for S A L E !!!",
+        "photo": "",
+        "min_bid_price": "800.00",
+        "auc_end_time": "2021-06-15T23:47:00Z",
+        "created_by": [
+            "mrkrajib00@gmail.com"
+        ],
+        "creation_date": "2021-06-08T18:27:25.354Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 12,
+    "fields": {
+        "name": "Computer Table",
+        "description": "7' x 5' new computer table for sale !!!",
+        "photo": "uploads/2021-06-02/computer-desk.png",
+        "min_bid_price": "1000.00",
+        "auc_end_time": "2021-06-15T15:50:00Z",
+        "created_by": [
+            "spikesp1088@gmail.com"
+        ],
+        "creation_date": "2021-06-08T18:27:25.354Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 13,
+    "fields": {
+        "name": "Table Fan",
+        "description": "GSl table high speed cooling table fan for sale !",
+        "photo": "uploads/2021-06-02/gsl-fan.jpg",
+        "min_bid_price": "1300.00",
+        "auc_end_time": "2021-06-07T00:27:00Z",
+        "created_by": [
+            "spikesp1088@gmail.com"
+        ],
+        "creation_date": "2021-06-08T18:27:25.354Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 14,
+    "fields": {
+        "name": "Plastic RFL Chair",
+        "description": "Used plastic RFL chair for sale !!!",
+        "photo": "uploads/2021-06-02/rfl-chair.jpeg",
+        "min_bid_price": "700.00",
+        "auc_end_time": "2021-06-16T22:06:00Z",
+        "created_by": [
+            "spikesp1088@gmail.com"
+        ],
+        "creation_date": "2021-06-08T18:27:25.354Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 15,
+    "fields": {
+        "name": "1800 sqft flat",
+        "description": "new ready made flat for sale in Tejgaon",
+        "photo": "uploads/2021-06-02/flat.jpg",
+        "min_bid_price": "6000000.00",
+        "auc_end_time": "2021-06-30T16:17:00Z",
+        "created_by": [
+            "spikesp1088@gmail.com"
+        ],
+        "creation_date": "2021-06-08T18:27:25.354Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 16,
+    "fields": {
+        "name": "Dining Table",
+        "description": "Used dining table for sale",
+        "photo": "uploads/2021-06-02/dining.jpeg",
+        "min_bid_price": "15000.00",
+        "auc_end_time": "2021-06-15T23:36:00Z",
+        "created_by": [
+            "abc@gmail.com"
+        ],
+        "creation_date": "2021-06-08T18:27:25.354Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 17,
+    "fields": {
+        "name": "Door",
+        "description": "Home door for sale",
+        "photo": "uploads/2021-06-02/door.jpg",
+        "min_bid_price": "800.00",
+        "auc_end_time": "2021-06-22T16:10:00Z",
+        "created_by": [
+            "spikesp1088@gmail.com"
+        ],
+        "creation_date": "2021-06-08T18:27:25.354Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 18,
+    "fields": {
+        "name": "Shop with goods",
+        "description": "full shop with all the goods for sale !!!",
+        "photo": "default.png",
+        "min_bid_price": "1200000.00",
+        "auc_end_time": "2021-12-31T00:00:00Z",
+        "created_by": [
+            "spikesp1088@gmail.com"
+        ],
+        "creation_date": "2021-06-08T18:27:25.354Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 19,
+    "fields": {
+        "name": "iPhone 11 Pro",
+        "description": "used iPhone 11 Pro \r\nUS version",
+        "photo": "uploads/2021-06-02/iphone-11.jpg",
+        "min_bid_price": "50000.00",
+        "auc_end_time": "2021-06-10T12:00:00Z",
+        "created_by": [
+            "spikesp1088@gmail.com"
+        ],
+        "creation_date": "2021-06-08T18:27:25.354Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 20,
+    "fields": {
+        "name": "iPad Pro",
+        "description": "1 year used iPad for sale",
+        "photo": "uploads/2021-06-03/ipad.jpg",
+        "min_bid_price": "40000.00",
+        "auc_end_time": "2021-06-10T11:34:00Z",
+        "created_by": [
+            "me@mail.com"
+        ],
+        "creation_date": "2021-06-08T18:27:25.354Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 21,
+    "fields": {
+        "name": "Bed",
+        "description": "used Wood Bed for sale \r\nused for 6 months",
+        "photo": "uploads/2021-06-05/bed.jpeg",
+        "min_bid_price": "1200.00",
+        "auc_end_time": "2021-06-15T23:45:00Z",
+        "created_by": [
+            "spikesp1088@gmail.com"
+        ],
+        "creation_date": "2021-06-08T18:27:25.354Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 22,
+    "fields": {
+        "name": "core i5 / amd r7 gaming pc",
+        "description": "newly build Intel - Ryzen PC",
+        "photo": "uploads/2021-06-08/pc.jpeg",
+        "min_bid_price": "35000.00",
+        "auc_end_time": "2021-06-12T01:00:00Z",
+        "created_by": [
+            "me@mail.com"
+        ],
+        "creation_date": "2021-06-08T18:27:25.354Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 23,
+    "fields": {
+        "name": "Land",
+        "description": "20 Katha Roadside land for sale",
+        "photo": "uploads/2021-06-08/land.png",
+        "min_bid_price": "2200000.00",
+        "auc_end_time": "2021-12-31T00:00:00Z",
+        "created_by": [
+            "spikesp1088@gmail.com"
+        ],
+        "creation_date": "2021-06-08T18:39:11.562Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 24,
+    "fields": {
+        "name": "Tesla Model 3",
+        "description": "1 year used Tesla Model 3 for sale !!\r\ncan be shipped within 7 days",
+        "photo": "uploads/2021-06-10/model3.jpg",
+        "min_bid_price": "4000000.00",
+        "auc_end_time": "2021-12-31T12:00:00Z",
+        "created_by": [
+            "me@mail.com"
+        ],
+        "creation_date": "2021-06-10T10:25:23.985Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 25,
+    "fields": {
+        "name": "Hunday AC Bus",
+        "description": "32 seat - comfortable - Japanese AC bus for sale !!!",
+        "photo": "uploads/2021-06-10/images.jpeg",
+        "min_bid_price": "10000000.00",
+        "auc_end_time": "2021-12-31T00:00:00Z",
+        "created_by": [
+            "mdalaminbijoy3@gmail.com"
+        ],
+        "creation_date": "2021-06-10T19:49:48.452Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 26,
+    "fields": {
+        "name": "Google Pixel 4a",
+        "description": "Want to sell this phone.",
+        "photo": "uploads/2021-06-11/google-pixel-41.jpg",
+        "min_bid_price": "15000.00",
+        "auc_end_time": "2021-06-20T00:19:00Z",
+        "created_by": [
+            "shuvokkr@gmail.com"
+        ],
+        "creation_date": "2021-06-11T13:10:55.261Z"
+    }
+},
+{
+    "model": "app.product",
+    "pk": 27,
+    "fields": {
+        "name": "MacBook Pro M1 2020",
+        "description": "Used Only 6 months \r\nEverything is new",
+        "photo": "uploads/2021-06-11/apple-macbook-pro-m1-2020-5.jpg",
+        "min_bid_price": "150000.00",
+        "auc_end_time": "2021-06-12T01:07:00Z",
+        "created_by": [
+            "spikesp1087@gmail.com"
+        ],
+        "creation_date": "2021-06-11T19:05:26.841Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 1,
+    "fields": {
+        "product": 1,
+        "placed_by": [
+            "mrkrajib00@gmail.com"
+        ],
+        "amount": "202.00",
+        "placed_datetime": "2021-05-26T10:38:41.425Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 2,
+    "fields": {
+        "product": 2,
+        "placed_by": [
+            "mrkrajib00@gmail.com"
+        ],
+        "amount": "830.00",
+        "placed_datetime": "2021-05-26T10:47:39.681Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 3,
+    "fields": {
+        "product": 2,
+        "placed_by": [
+            "me@mail.com"
+        ],
+        "amount": "950.00",
+        "placed_datetime": "2021-05-26T11:00:01.282Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 4,
+    "fields": {
+        "product": 7,
+        "placed_by": [
+            "me@mail.com"
+        ],
+        "amount": "299.00",
+        "placed_datetime": "2021-05-26T11:02:37.375Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 5,
+    "fields": {
+        "product": 1,
+        "placed_by": [
+            "spikesp1088@gmail.com"
+        ],
+        "amount": "250.51",
+        "placed_datetime": "2021-06-01T18:52:40.035Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 6,
+    "fields": {
+        "product": 1,
+        "placed_by": [
+            "spikesp1087@gmail.com"
+        ],
+        "amount": "280.99",
+        "placed_datetime": "2021-06-01T20:04:41.903Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 9,
+    "fields": {
+        "product": 2,
+        "placed_by": [
+            "spikesp1088@gmail.com"
+        ],
+        "amount": "960.43",
+        "placed_datetime": "2021-06-02T06:50:15.100Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 10,
+    "fields": {
+        "product": 21,
+        "placed_by": [
+            "mrkrajib00@gmail.com"
+        ],
+        "amount": "900.00",
+        "placed_datetime": "2021-06-05T17:49:28.970Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 11,
+    "fields": {
+        "product": 24,
+        "placed_by": [
+            "spikesp1087@gmail.com"
+        ],
+        "amount": "4010500.00",
+        "placed_datetime": "2021-06-10T13:14:12.147Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 12,
+    "fields": {
+        "product": 24,
+        "placed_by": [
+            "spikesp1088@gmail.com"
+        ],
+        "amount": "4010800.00",
+        "placed_datetime": "2021-06-10T14:54:40.326Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 13,
+    "fields": {
+        "product": 2,
+        "placed_by": [
+            "mdalaminbijoy3@gmail.com"
+        ],
+        "amount": "1200.00",
+        "placed_datetime": "2021-06-10T19:45:12.661Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 14,
+    "fields": {
+        "product": 16,
+        "placed_by": [
+            "mdalaminbijoy3@gmail.com"
+        ],
+        "amount": "16000.00",
+        "placed_datetime": "2021-06-10T19:46:06.727Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 15,
+    "fields": {
+        "product": 25,
+        "placed_by": [
+            "spikesp1087@gmail.com"
+        ],
+        "amount": "10005000.00",
+        "placed_datetime": "2021-06-10T20:43:49.474Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 16,
+    "fields": {
+        "product": 2,
+        "placed_by": [
+            "shuvokkr@gmail.com"
+        ],
+        "amount": "1600.00",
+        "placed_datetime": "2021-06-11T13:00:24.180Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 17,
+    "fields": {
+        "product": 26,
+        "placed_by": [
+            "spikesp1087@gmail.com"
+        ],
+        "amount": "16000.00",
+        "placed_datetime": "2021-06-11T16:54:46.424Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 18,
+    "fields": {
+        "product": 9,
+        "placed_by": [
+            "mdalaminbijoy3@gmail.com"
+        ],
+        "amount": "890.00",
+        "placed_datetime": "2021-06-11T17:37:56.745Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 19,
+    "fields": {
+        "product": 26,
+        "placed_by": [
+            "mdalaminbijoy3@gmail.com"
+        ],
+        "amount": "16700.00",
+        "placed_datetime": "2021-06-11T17:42:34.457Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 20,
+    "fields": {
+        "product": 12,
+        "placed_by": [
+            "mdalaminbijoy3@gmail.com"
+        ],
+        "amount": "1200.00",
+        "placed_datetime": "2021-06-11T17:57:45.481Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 21,
+    "fields": {
+        "product": 12,
+        "placed_by": [
+            "me@mail.com"
+        ],
+        "amount": "1250.00",
+        "placed_datetime": "2021-06-11T20:12:01.627Z"
+    }
+},
+{
+    "model": "app.auction",
+    "pk": 22,
+    "fields": {
+        "product": 16,
+        "placed_by": [
+            "me@mail.com"
+        ],
+        "amount": "17000.00",
+        "placed_datetime": "2021-06-11T20:14:45.437Z"
+    }
+}
+]

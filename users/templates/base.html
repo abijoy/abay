@@ -1,0 +1,70 @@
+{% extends 'abay_base.html' %}
+{% load static %}
+
+{% block navbar %}
+<div id="navbar" style="margin-bottom: 20px;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+
+    <!-- add brand logo -->
+    <a class="navbar-brand" href="{% url 'app:dashboard' %}">
+      <img src="{% static '/media/logo.png' %}" class="d-inline-block align-top" alt="Site Logo">
+    </a>
+
+    <!-- add navbar toggler for responsiveness -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nabarNav" aria-controls="nabarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nabarNav">
+
+      <!-- add nav items  -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <!-- <a class="nav-link" href="#"></a> -->
+          </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'app:add_product' %}">Add Item</a>
+            </li>
+          {% endif %}
+
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'app:user_dashboard' %}">My Dashboard</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#">{{ user }}</a>
+              </li>
+            {% endif %}
+        
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+          </li>
+          {% endif %}
+
+       </ul>
+    </div>
+
+  </nav>
+  </div>
+
+{% endblock %}
+
+{% block app_base %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-lg-4"></div>
+            <div class="col-md-4 col-lg-4">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class="col-md-4 col-lg-4"></div>
+        </div>
+    </div>
+{% endblock %}

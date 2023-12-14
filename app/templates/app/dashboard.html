@@ -1,0 +1,132 @@
+{% extends 'app_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load tz %}
+
+{% block title %}
+  Dashboard - aBay
+{% endblock %} 
+  
+{% block content %}
+
+
+
+	<div class="row">
+		<div class="col-md-9">
+			
+			<!-- add if any messages exits for this page -->
+			{% if messages %}
+			<div class="messages">
+			    {% for message in messages %}
+			    <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+			    {% endfor %}
+			</div>
+			<br><br>
+			{% endif %}
+
+			<!-- inside this grid space place another 3 grids  -->
+			<h4>Items to bid</h4><hr>
+
+
+			<div class="infinite-container">
+				<!-- use row and infinite-item class together for perfect pagination -->
+				<div class="row infinite-item">
+
+			    {% for p in page_obj %}
+
+			        <div class="col-md-4">
+			        	<a href="{% url 'app:product_detail' p.id %}" class="cardLink">
+				        <div class="card shadow1" style="margin-bottom: 20px;">
+
+				        	{% if p.photo %}
+				        		<img class="card-img-top" src="{{ p.photo.url }}" style="height: 200px;">
+				        	{% endif %}
+
+							{% if p.is_bid_running %}
+								<span class="status">Running</span>
+							{% else %}
+								<span class="status" style="background-color: red; color: white;">Ended</span>
+							{% endif %}
+
+				          <div class="card-body ">
+				            <h5 class="card-title"><b>{{ p }}</b></h5>
+							<!-- <p class="card-text">{{ p.auc_end_time }}</p> -->
+				            <p class="card-text">{{ p.description  }}</p>
+				            <p class="card-text"><i>Bid starts from</i>: Tk. <span class="text-success"><b>{{ p.min_bid_price|floatformat  }}</b></span></p>
+				            <!-- <a href="{% url 'app:product_detail' p.id %}">Show More</a> -->
+				          </div>
+				        </div>
+					    </a>
+			        </div>
+				   
+			        {% if forloop.counter|divisibleby:3 %}
+			        	</div>
+			        	<div class="row infinite-item">
+			        {% endif %}
+
+			    {% endfor %}
+				</div>
+			</div>
+
+			<!-- add a content loading state -->
+			<div class="loading" style="display: none; text-align: center;">
+			    <img class="loader" src="{% static 'media/loading2.gif' %}">
+			</div>
+
+
+		</div>
+
+		<!-- side bar section -->
+		<div class="col-md-3 d-none d-md-block">
+			<div>
+			<h4>My Listed Items </h4><hr>
+			<ul class="list-group">
+				{% for p in products_by_user %}
+					<li class="list-group-item"><a href="{% url 'app:product_detail' p.id %}"> {{ p }}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+		</div>
+
+		<!-- pagination link to be used by Waypoint.js for infinite-scrolling -->
+		<div class="pagination">
+		    {% if page_obj.has_next %}
+		        <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}"></a>
+		    {% endif %}
+		</div>
+	</div>
+
+	<!-- Go back to top  -->
+	<p class="totop"> 
+	    <a href="#top" id="totop1"><b>Back to top</b></a> 
+	</p>
+
+	<script>
+	    var infinite = new Waypoint.Infinite({
+	        element: $('.infinite-container')[0],
+	        onBeforePageLoad: function() {
+	            $('.loading').show()
+	        },
+	        onAfterPageLoad: function() {
+	            $('.loading').hide()
+	        }
+	    });
+
+	    // scripts for scroll to top
+	    $('#totop1').click(function () {
+	        $('body,html').animate({
+	            scrollTop: 0
+	        }, 1000);
+	        return false;
+	    });
+
+	    $(window).scroll(function () {
+	        if ($(this).scrollTop() > 50) {
+	            $('.totop a').fadeIn();
+	        } else {
+	            $('.totop a').fadeOut();
+	        }
+	    });
+	</script>
+
+{% endblock %}

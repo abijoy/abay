@@ -1,0 +1,150 @@
+{% extends 'app_base.html' %}
+{% load crispy_forms_tags %}
+{% load tz %}
+  
+{% block title %}
+  {{ product }} - aBay
+{% endblock %} 
+
+{% block content %}
+
+
+
+<!-- <div class="container"> -->
+	<div class="row ">
+		<div class="col-md-8">
+			<!-- add if any messages exits for this page -->
+			{% if messages %}
+			<div class="messages">
+			    {% for message in messages %}
+			    <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+			    {% endfor %}
+			</div>
+			<br><br>
+			{% endif %}
+
+			<div class="card" style="width: 18rem; margin-bottom: 20px;">
+				{% if product.photo %}
+					<img class="card-img-top" src="{{ product.photo.url }}" style="height: 200px;">
+				{% endif %}
+
+				<div class="card-body">
+			    <h3 class="card-title">{{ product }}</h3>
+			    <p class="card-text">
+			    	<span class="text-info"><u>Description:</u></span> <span>{{ product.description  }}</span>
+			    </p>
+
+			    <p class="card-text">Bid starts from <span class="text-success">{{ product.min_bid_price  }}</span></p>
+
+			    <p class="card-text" id="end-datetime">
+
+			    	<h4 id="headline">Bid Ends In</h4>
+			    	<div id="countdown">
+			    	 <!-- <ul class="flex-container"> -->
+			    	    <li class="count-li"><span id="days"></span>Days</li>
+			    	    <span class="dash"><b>:</b></span>
+
+			    	    <li class="count-li"><span id="hours"></span>Hrs</li>
+			    	    <span class="dash"><b>:</b></span>
+
+			    	    <li class="count-li"><span id="minutes"></span>Mins</li>
+			    	    <span class="dash"><b>:</b></span>
+
+			    	    <li class="count-li"><span id="seconds"></span>Secs</li>
+
+			    	 <!-- </ul> -->
+			    	</div>
+			    </p>
+			    	<!-- <p> -->
+			    	<!-- <u>Auction Ends in</u>:</span> {{ product.auc_end_time  }} {{ product.auc_end_time|time  }}</p> -->
+
+			    
+			    <br>
+			    <p class="card-text small">Posted by: {{ product.created_by  }} on {{ product.creation_date|timezone:"Asia/Dhaka" }}</p>
+			    
+			    {% if request.session.edit_access %}
+			    	<a href="{% url 'app:product_edit' product.id %}" class="btn btn-outline-primary">Edit</a>
+			    	<a href="{% url 'app:product_delete' product.id %}" class="btn btn-outline-danger">DELETE</a>
+			    {% else %}
+					{% if product.is_bid_running %}
+						<a href="{% url 'app:auction' product.id %}" class="btn btn-outline-success d-flex justify-content-center" >Place your bid</a>
+					{% else %}
+						<a href="{% url 'app:auction' product.id %}" class="disabled btn btn-outline-success d-flex justify-content-center" >Place your bid</a>
+					{% endif %}
+			    {% endif %}
+		    </div>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="bidTable">
+			<h3 class="bid-table-info">Bids on {{ product }}</h3>
+			<p class="winner">Winner is <span><i>{{ request.session.winner }}</i></span></p>
+			<table>
+				<tr>
+					<th>Placed By</th>
+					<th>Amount</th>
+				</tr>
+				{% for bid in bids %}
+					<tr>
+						<td>{{ bid.placed_by }}</td>
+						<td>{{ bid.amount }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	var datetime = new Date('{{ product.auc_end_time|date:"D, d M Y H:i:s"}}')
+	const second = 1000,
+		  minute = second * 60,
+		  hour = minute * 60,
+		  day = hour * 24;
+	// console.log(datetime.getTime() - new Date().getTime())
+	let countDown = setInterval(function() {
+
+		// Get today's date and time
+		let now = new Date().getTime();
+
+		// Find the distance between now and the count down date
+		let distance = datetime - now;
+
+		// Time calculations for days, hours, minutes and seconds
+		let day1 = Math.floor(distance / (day))
+		let hours1 = Math.floor((distance % (day)) / (hour))
+		let minutes1 = Math.floor((distance % (hour)) / (minute))
+		let seconds1 = Math.floor((distance % (minute)) / second)
+
+		// adding preceding 0 if something is single digit
+		day1 = day1 < 10 ? '0' + day1 : day1
+		hours1 = hours1 < 10 ? '0' + hours1 : hours1
+		minutes1 = minutes1 < 10 ? '0' + minutes1 : minutes1
+		seconds1 = seconds1 < 10 ? '0' + seconds1 : seconds1
+
+		// render the values on html tags
+		document.getElementById("days").innerText = day1
+	    document.getElementById("hours").innerText = hours1
+	    document.getElementById("minutes").innerText = minutes1
+		document.getElementById("seconds").innerText = seconds1
+
+
+		// If the count down is over, write some text 
+		if (distance < 0) {
+		  
+		  document.getElementById("end-datetime").innerHTML = "<b><i>Auction Ended</i></b>";
+
+		  document.getElementById("days").innerText = '00'
+		  document.getElementById("hours").innerText = '00'
+		  document.getElementById("minutes").innerText = '00'
+		  document.getElementById("seconds").innerText = '00'
+		  
+		  clearInterval(countDown);
+		}
+
+	}, 1000)
+
+</script>
+{% endblock %}

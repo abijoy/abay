@@ -1,0 +1,21 @@
+{% extends 'app_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  Add Item - aBay
+{% endblock %} 
+  
+{% block content %}
+
+
+		<!-- no more gooling how to center a div; here comes the flexbox -->
+		<div class="d-md-flex justify-content-center">
+			<form method="post" enctype="multipart/form-data">
+			  {% csrf_token %}
+			  {{ form|crispy }}
+			  <button type="submit" class="btn btn-success">Add Item</button>
+			</form>
+		</div>
+
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    Hello, {{ user.username|default:'Guest' }}!
+
+    <div>
+        {% if request.user.is_authenticated %}
+        <!-- GET request to logout is not allowed in Django 5.0 -->
+        <!-- <a href="{% url 'logout' %}">Logout</a> -->
+
+        <!-- You must make a POST request to logout like this -->
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+        <a href="{% url 'password_change' %}">Change password</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </div>
+{% endblock %}
