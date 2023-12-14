@@ -14,7 +14,7 @@ from django.contrib import messages
 
 # to manage auction datetime
 from django.utils import timezone
-from datetime import datetime
+from datetime import datetime, timedelta
 import pytz
 
 from django.shortcuts import get_object_or_404
@@ -114,7 +114,7 @@ def product_detail(request, id):
 		request.session['edit_access'] = True
 	bids = Auction.objects.filter(product=p).order_by('-amount')
 	context = {'product': p, 'bids': bids,}
-	local_datetime = timezone.now() + datetime.timedelta(hours=6)
+	local_datetime = timezone.now() + timedelta(hours=6)
 	if p.auc_end_time < local_datetime:
 		biggest_bid = Auction.objects.filter(product=p).aggregate(Max('amount'))
 		amount = biggest_bid['amount__max']
