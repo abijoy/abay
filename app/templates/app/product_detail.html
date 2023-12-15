@@ -11,74 +11,74 @@
 
 
 <!-- <div class="container"> -->
-	<div class="row ">
-		<div class="col-md-8">
-			<!-- add if any messages exits for this page -->
-			{% if messages %}
-			<div class="messages">
-			    {% for message in messages %}
-			    <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
-			    {% endfor %}
-			</div>
-			<br><br>
+<div class="row ">
+	<div class="col-md-4 col-sm-12">
+		<!-- add if any messages exits for this page -->
+		{% if messages %}
+		<div class="messages">
+			{% for message in messages %}
+			<div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+			{% endfor %}
+		</div>
+		<br><br>
+		{% endif %}
+
+		<div class="card" style="width: 20rem; margin-bottom: 20px;">
+			{% if product.photo %}
+				<img class="card-img-top" src="{{ product.photo.url }}" style="height: 200px;">
 			{% endif %}
 
-			<div class="card" style="width: 18rem; margin-bottom: 20px;">
-				{% if product.photo %}
-					<img class="card-img-top" src="{{ product.photo.url }}" style="height: 200px;">
+			<div class="card-body">
+			<h5 class="card-title">{{ product }}</h5>
+			<p class="card-text">
+				<span class="text-info"><u>Description:</u></span> <span>{{ product.description  }}</span>
+			</p>
+
+			<p class="card-text">Bid starts from <span class="text-success">{{ product.min_bid_price  }}</span></p>
+
+			<p class="card-text" id="end-datetime">
+
+				<h6 id="headline">Bid Ends In</h6>
+				<div id="countdown">
+					<!-- <ul class="flex-container"> -->
+					<li class="count-li"><span id="days"></span>Days</li>
+					<span class="dash"><b>:</b></span>
+
+					<li class="count-li"><span id="hours"></span>Hrs</li>
+					<span class="dash"><b>:</b></span>
+
+					<li class="count-li"><span id="minutes"></span>Mins</li>
+					<span class="dash"><b>:</b></span>
+
+					<li class="count-li"><span id="seconds"></span>Secs</li>
+
+					<!-- </ul> -->
+				</div>
+			</p>
+				<!-- <p> -->
+				<!-- <u>Auction Ends in</u>:</span> {{ product.auc_end_time  }} {{ product.auc_end_time|time  }}</p> -->
+
+			
+			<br>
+			<p class="card-text small">Posted by: {{ product.created_by  }} on {{ product.creation_date|timezone:"Asia/Dhaka" }}</p>
+			
+			{% if request.session.edit_access %}
+				<a href="{% url 'app:product_edit' product.id %}" class="btn btn-outline-primary">Edit</a>
+				<a href="{% url 'app:product_delete' product.id %}" class="btn btn-outline-danger">DELETE</a>
+			{% else %}
+				{% if product.is_bid_running %}
+					<a href="{% url 'app:auction' product.id %}" class="btn btn-outline-success d-flex justify-content-center" >Place your bid</a>
+				{% else %}
+					<a href="{% url 'app:auction' product.id %}" class="disabled btn btn-outline-success d-flex justify-content-center" >Place your bid</a>
 				{% endif %}
-
-				<div class="card-body">
-			    <h3 class="card-title">{{ product }}</h3>
-			    <p class="card-text">
-			    	<span class="text-info"><u>Description:</u></span> <span>{{ product.description  }}</span>
-			    </p>
-
-			    <p class="card-text">Bid starts from <span class="text-success">{{ product.min_bid_price  }}</span></p>
-
-			    <p class="card-text" id="end-datetime">
-
-			    	<h4 id="headline">Bid Ends In</h4>
-			    	<div id="countdown">
-			    	 <!-- <ul class="flex-container"> -->
-			    	    <li class="count-li"><span id="days"></span>Days</li>
-			    	    <span class="dash"><b>:</b></span>
-
-			    	    <li class="count-li"><span id="hours"></span>Hrs</li>
-			    	    <span class="dash"><b>:</b></span>
-
-			    	    <li class="count-li"><span id="minutes"></span>Mins</li>
-			    	    <span class="dash"><b>:</b></span>
-
-			    	    <li class="count-li"><span id="seconds"></span>Secs</li>
-
-			    	 <!-- </ul> -->
-			    	</div>
-			    </p>
-			    	<!-- <p> -->
-			    	<!-- <u>Auction Ends in</u>:</span> {{ product.auc_end_time  }} {{ product.auc_end_time|time  }}</p> -->
-
-			    
-			    <br>
-			    <p class="card-text small">Posted by: {{ product.created_by  }} on {{ product.creation_date|timezone:"Asia/Dhaka" }}</p>
-			    
-			    {% if request.session.edit_access %}
-			    	<a href="{% url 'app:product_edit' product.id %}" class="btn btn-outline-primary">Edit</a>
-			    	<a href="{% url 'app:product_delete' product.id %}" class="btn btn-outline-danger">DELETE</a>
-			    {% else %}
-					{% if product.is_bid_running %}
-						<a href="{% url 'app:auction' product.id %}" class="btn btn-outline-success d-flex justify-content-center" >Place your bid</a>
-					{% else %}
-						<a href="{% url 'app:auction' product.id %}" class="disabled btn btn-outline-success d-flex justify-content-center" >Place your bid</a>
-					{% endif %}
-			    {% endif %}
-		    </div>
+			{% endif %}
+			</div>
 		</div>
 	</div>
-
-	<div class="col-md-4">
+	<div class="col-md-4"></div>
+	<div class="col-md-4 col-sm-12">
 		<div class="bidTable">
-			<h3 class="bid-table-info">Bids on {{ product }}</h3>
+			<h6 class="bid-table-info">Bids on {{ product }}</h6>
 			<p class="winner">Winner is <span><i>{{ request.session.winner }}</i></span></p>
 			<table>
 				<tr>

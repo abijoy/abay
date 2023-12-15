@@ -132,5 +132,10 @@ h1 #headline{
 	  border-bottom: 1px solid black;
 	  font-weight: bold;
   }
+
+  .card-img-top {
+	width: 100%;
+	object-fit: cover;
+  }
   
   
