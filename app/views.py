@@ -62,9 +62,10 @@ def dashboard(request):
 	user = request.user
 	
 	products_all = Product.objects.all().order_by('-auc_end_time',)
-
-	# products_by_user = Product.objects.filter(created_by=request.user).order_by('-creation_date')
 	products_by_user = []
+	
+	if request.user.is_authenticated:
+		products_by_user = Product.objects.filter(created_by=request.user).order_by('-creation_date')
 
 	paginator = Paginator(products_all, 6)
 	page = request.GET.get('page', 1)

@@ -53,6 +53,7 @@
 							<!-- <p class="card-text">{{ p.auc_end_time }}</p> -->
 				            <p class="card-text">{{ p.description  }}</p>
 				            <p class="card-text"><i>Bid starts from</i>: Tk. <span class="text-success"><b>{{ p.min_bid_price|floatformat  }}</b></span></p>
+							<p class="card-text small">Posted by: {{ p.created_by  }} on {{ p.creation_date|timezone:"Asia/Dhaka" }}</p>
 				            <!-- <a href="{% url 'app:product_detail' p.id %}">Show More</a> -->
 				          </div>
 				        </div>
@@ -76,17 +77,19 @@
 
 		</div>
 
+		{% if request.user.is_authenticated %}
 		<!-- side bar section -->
 		<div class="col-md-3 d-none d-md-block">
 			<div>
-			<h4>My Listed Items </h4><hr>
-			<ul class="list-group">
-				{% for p in products_by_user %}
-					<li class="list-group-item"><a href="{% url 'app:product_detail' p.id %}"> {{ p }}</a></li>
-				{% endfor %}
-			</ul>
+				<h4>My Listed Items </h4><hr>
+				<ul class="list-group">
+					{% for p in products_by_user %}
+						<li class="list-group-item"><a href="{% url 'app:product_detail' p.id %}"> {{ p }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
 		</div>
-		</div>
+		{% endif %}
 
 		<!-- pagination link to be used by Waypoint.js for infinite-scrolling -->
 		<div class="pagination">
