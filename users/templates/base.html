@@ -34,7 +34,11 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="#">{{ user }}</a>
+                <a class="nav-link" href="#">{{ user }}
+                   {% if user.email_confirmation %}
+                    verified
+                   {% endif %}
+                  </a>
               </li>
             {% endif %}
         
@@ -59,6 +63,20 @@
 {% block app_base %}
     <div class="container">
         <div class="row">
+            <!-- add if any messages exits for this page -->
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
+                  {{ message }}
+                  <button type="button" class="close" aria-label="Close" style="float: right;">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+                {% endfor %}
+            </div>
+            <br><br>
+            {% endif %}
             <div class="col-md-4 col-lg-4"></div>
             <div class="col-md-4 col-lg-4">
                 {% block content %}

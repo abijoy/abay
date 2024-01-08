@@ -1,0 +1,172 @@
+{% extends 'base.html' %} 
+{% load crispy_forms_tags %} 
+
+{% block style %}
+
+    <style>
+        form {
+            padding: 1.1rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            background: #fff;
+        }
+        form .form-control {
+            display: block;
+            height: 50px;
+            margin-right: 0.5rem;
+            font-size: 1.25rem;
+            min-width: 0;
+        }
+
+        #code_sent_message {
+            display: none;
+        }
+
+        #code_status {
+            color: red;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="alert alert-info" role="alert" id="code_sent_message">
+    <!-- This is a info alert—check it out! -->
+    <span id="msg_text"></span>
+    <button type="button" class="close" aria-label="Close" style="float: right;">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form>
+    {% csrf_token %}
+    <h4 class="text-center mb-4">Verify Your Email</h4>
+    <small class="text-center">We've sent a verification code to {{ request.user.email }}.</small>
+    <p>Enter the code:</p>
+      <input type="text" maxlength="6" pattern="[0-9]" class="form-control" id="verification_code" value="" required>
+    <p id="code_status"></p>
+    <p> Didn't receive a code? <a href="#" id="resend_code">Send a new code </a></p>
+    <button type="submit" class="w-100 btn btn-primary" id="submit-btn" disabled>Verify Email</button>
+  </form>
+
+
+{% endblock %}
+
+
+{% block script %}
+
+<script>
+
+    const btn = document.querySelector('#submit-btn');
+    const verification_code = document.querySelector('#verification_code');
+    const code_status = document.querySelector('#code_status');
+    const resend_code = document.querySelector('#resend_code')
+    let code;
+
+    verification_code.addEventListener('input', (e) => {
+        e.preventDefault()
+        const _code = e.target.value;
+        // console.log(_code)
+        if (isNaN(_code)){
+            code_status.textContent = 'Enter a valid code.' 
+        } else {
+            if (_code.length == 6){
+                btn.disabled = false;
+                code = _code;
+                code_status.textContent = ''
+            } else {
+                btn.disabled = true
+            }
+        }
+    })
+
+    function check_valid_code(code) {
+        if (!code || code.length != 6 || isNaN(code)) {
+            code_status.textContent = 'Enter a valid code.';
+            btn.disabled = true
+            return false
+        }
+        return true
+    }
+
+    // Get CSRF token from cookie
+    function getCookie(name) {
+        let token = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+        return token ? token.pop() : ''; 
+    }
+
+    btn.addEventListener('click', e => {
+        e.preventDefault();
+        const csrftoken = getCookie('csrftoken');
+
+        if (!check_valid_code(code)) return;
+
+        console.log(JSON.stringify(code))
+        const url = "{% url 'verify-email' %}" 
+        fetch(url, {
+            method: 'POST',
+            headers:{
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': csrftoken,
+            },
+            body: JSON.stringify(code)
+
+        }).then(response => {
+            console.log(response)
+            return response.json()
+        }).then(data => {
+            console.log(data)
+            if (data['message'] !== 'SUCCESS'){
+                document.getElementById('code_status').innerHTML = `${data['message']}. Enter it again, or send a new code.`
+            } else {
+                return window.location.replace(data['success_url'])
+            }
+        });
+    });
+
+
+
+
+    resend_code.addEventListener('click', e => {
+        e.preventDefault();
+        // const csrftoken = getCookie('csrftoken');
+
+        const url = "{% url 'get-verification-code' %}";
+        fetch(url, {
+            method: 'GET',
+            headers:{
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                // 'X-CSRFToken': csrftoken,
+            },
+            // body: JSON.stringify(code)
+
+        }).then(response => {
+            console.log(response)
+            return response.json()
+        }).then(data => {
+            console.log(data)
+            let code_sent_message = document.querySelector('#code_sent_message');
+            let msg_holder = document.querySelector('#msg_text')
+            // const span = document.createElement('span')
+            let msg = ''
+            if (data['message'] == 'SUCCESS'){
+                msg = 'A new verificaiton code is sent. Check your email'
+
+            } else {
+                msg = 'Something went wrong!'
+            }
+            msg_holder.textContent = msg
+            // code_sent_message.prepend(span);
+            code_sent_message.style.display = 'block'
+        });
+    });
+
+
+
+</script>
+
+
+{% endblock %}

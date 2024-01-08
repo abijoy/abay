@@ -1,13 +1,18 @@
-from django.urls import path, include
-from . import views
 
-# app_name = 'users'
+from django.contrib import admin
+from django.urls import path, include
+from django.contrib.auth import views as auth_views
+from . import views as users_views
+
 
 urlpatterns = [
-    path('', include('django.contrib.auth.urls')),
-    path('register/', views.register, name='register'),
-    # path('accounts/', include('allauth.urls')),
-    path('dashboard/', views.dashboard, name='dashboard'),
-    # path('accounts/profile/', views.profile, name='profile'),
-]
+    path('admin/', admin.site.urls),
+    path('', users_views.home, name='home'),
+    path('register/', users_views.register, name='register'),
+    path('login/', users_views.login_view, name='login'),
+    path('verify/x/<str:token>/', users_views.verify_account, name='users-verify'),
+    path('verify/email/', users_views.verify_email_verification_code, name='verify-email'),
+    path('verify/new/code/', users_views.get_email_verification_code, name='get-verification-code'),
+    path('myview/', users_views.myview),
 
+]

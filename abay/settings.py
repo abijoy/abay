@@ -17,7 +17,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', '192.168.0.104', 'spike87.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', '192.168.1.116', 'spike87.pythonanywhere.com']
 
 
 # Application definition
@@ -30,12 +30,25 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'debug_toolbar',
-    'users',
-    'app',
-    'crispy_forms',
 ]
 
+
+CRISPY_APPS = [
+    'crispy_forms',
+    'crispy_bootstrap4',
+]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+MY_APPS = [
+    'users',
+    'app',
+]
+
+INSTALLED_APPS = INSTALLED_APPS + MY_APPS + CRISPY_APPS 
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -154,5 +167,14 @@ EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = True
 
-LOGIN_REDIRECT_URL = 'app:dashboard'
+# LOGIN_REDIRECT_URL = 'app:dashboard'
 LOGOUT_REDIRECT_URL = 'app:dashboard'
+
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+
+AUTHENTICATION_BACKENDS = [
+    'users.backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
