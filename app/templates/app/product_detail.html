@@ -6,95 +6,223 @@
   {{ product }} - aBay
 {% endblock %} 
 
+{% block style %}
+	<style type="text/css">
+	
+		.swiper {
+		width: 70%;
+		height: 100%;
+		}
+	
+		.swiper-slide {
+		text-align: center;
+		font-size: 18px;
+		background: #fff;
+		/* Center slide text vertically */
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		-webkit-align-items: center;
+		align-items: center;
+		cursor: pointer;
+		}
+	
+		.swiper-slide img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		}
+	
+		.swiper {
+		width: 100%;
+		}
+	
+	
+	
+		.swiper_thumb .swiper-slide {
+		opacity: 0.7;
+		}
+	
+		.swiper_thumb .swiper-slide:hover {
+		opacity: 1;
+		}
+	
+		.swiper_thumb .swiper-slide-thumb-active {
+		opacity: 1;
+		border: 1px solid #191919;
+		/* border-radius: 1rem; */
+		}
+	
+		.swiper-slide img {
+		display: block;
+		width: 100%;
+		/* height: 100%;
+		object-fit: cover; */
+		user-select: none;
+		}
+	
+		.swiper-button-next,
+		.swiper-button-prev {
+		color: #191919;
+		background: rgba(255, 255, 255, .8);
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		box-shadow: 0px 2px 2px #191919;
+		z-index: 9;
+		}
+	
+		.swiper-button-next,
+		.swiper-button-prev::after {
+		font-size: 24px;
+		font-weight: 600;
+		}
+	
+		.swiper-button-prev,
+		.swiper-button-next::after {
+		font-size: 24px;
+		font-weight: 600;
+		}
+	
+		.swiper-button-next {
+		right: 0px;
+		}
+	
+		.swiper-button-prev {
+		left: 0px;
+		}
+	
+		.swiper-button-next:hover {
+		color: #ccc;
+		background: #191919;
+		}
+	
+		.swiper-button-prev:hover {
+		color: #ccc;
+		background: #191919;
+		}
+	
+	
+	</style>
+{% endblock %}
+
 {% block content %}
 
 
+<section class="clickble_slider1">
+	<div class="container py-4">
+		<div class="row">
+			<div class="col-sm-6">
+				<!-- Swiper -->
+				<div class="row">
+					<div class="col-md-12 px-0 py-2">
+					<div class="swiper swiper_large_preview">
+						<div class="swiper-wrapper">
 
-<!-- <div class="container"> -->
-<div class="row ">
-	<div class="col-md-4 col-sm-12">
-		<!-- add if any messages exits for this page -->
-		{% if messages %}
-		<div class="messages">
-			{% for message in messages %}
-			<div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
-			{% endfor %}
-		</div>
-		<br><br>
-		{% endif %}
+							{% for image in product.product_images.all %}
+								<div class="swiper-slide">
+									<div class="zoom_img">
+										<img class="img-fluid" src="{{ image.image.url }}" />
+									</div>
+								</div>
+							{% empty %}
+								No photos
+							{% endfor %}
+							<br> <br>
+						</div>
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+					</div>
+					</div>
 
-		<div class="card" style="width: 20rem; margin-bottom: 20px;">
-			{% if product.photo %}
-				<img class="card-img-top" src="{{ product.photo.url }}" style="height: 200px;">
-			{% endif %}
+					<!-- thumnail preview -->
+					<div class="col-md-12 px-0 py-2">
+						<div thumbsSlider="" class="swiper swiper_thumb">
+							<div class="swiper-wrapper">
+								{% for image in product.product_images.all %}
 
-			<div class="card-body">
-			<h5 class="card-title">{{ product }}</h5>
-			<p class="card-text">
-				<span class="text-info"><u>Description:</u></span> <span>{{ product.description  }}</span>
-			</p>
+									<div class="swiper-slide">
+										<div class="zoom_img">
+											<img class="img-fluid" src="{{ image.image.url }}" />
+										</div>
+									</div>
+								{% empty %}
+									No photos
+								{% endfor %}
+								<br> <br>
+							</div>
 
-			<p class="card-text">Bid starts from <span class="text-success">{{ product.min_bid_price  }}</span></p>
-
-			<p class="card-text" id="end-datetime">
-
-				<h6 id="headline">Bid Ends In</h6>
-				<div id="countdown">
-					<!-- <ul class="flex-container"> -->
-					<li class="count-li"><span id="days"></span>Days</li>
-					<span class="dash"><b>:</b></span>
-
-					<li class="count-li"><span id="hours"></span>Hrs</li>
-					<span class="dash"><b>:</b></span>
-
-					<li class="count-li"><span id="minutes"></span>Mins</li>
-					<span class="dash"><b>:</b></span>
-
-					<li class="count-li"><span id="seconds"></span>Secs</li>
-
-					<!-- </ul> -->
+							<div class="swiper-button-next"></div>
+							<div class="swiper-button-prev"></div>
+						</div>
+					</div>
 				</div>
-			</p>
-				<!-- <p> -->
-				<!-- <u>Auction Ends in</u>:</span> {{ product.auc_end_time  }} {{ product.auc_end_time|time  }}</p> -->
-
-			
-			<br>
-			<p class="card-text small">Posted by: {{ product.created_by  }} on {{ product.creation_date|timezone:"Asia/Dhaka" }}</p>
-			
-			{% if request.session.edit_access %}
-				<a href="{% url 'app:product_edit' product.id %}" class="btn btn-outline-primary">Edit</a>
-				<a href="{% url 'app:product_delete' product.id %}" class="btn btn-outline-danger">DELETE</a>
-			{% else %}
-				{% if product.is_bid_running %}
-					<a href="{% url 'app:auction' product.id %}" class="btn btn-outline-success d-flex justify-content-center" >Place your bid</a>
-				{% else %}
-					<a href="{% url 'app:auction' product.id %}" class="disabled btn btn-outline-success d-flex justify-content-center" >Place your bid</a>
-				{% endif %}
-			{% endif %}
 			</div>
+
+
+			<!-- add product details -->
+			<div class="col-sm-6">
+				<h1>{{ product.name }}</h1>
+				<!-- <h3 class="text-success">Price: </h3> -->
+				<h3 >Last Bidding Price: <span class="text-success">{{ product.min_bid_price  }} BDT</span></h3>
+				<div class="lorem_text">
+					<p class="card-text small">Posted by: {{ product.created_by  }} on {{ product.creation_date|timezone:"Asia/Dhaka" }}</p>
+				<h3>Description</h3>
+				<p>
+					<!-- {{ product.description }} -->
+					- i7 4790 Prozessor - Asrock Mainboard - 250 GB Crucial SSD - 16 GB RAM Corsair DDR3 1600 mit 9-9-9-24 - GTX. 
+					<a href="#">See more</a>
+				</p>
+
+				<div id="end-datetime">
+
+					<h3 id="headline">Bid Ends In</h3>
+					<div id="countdown">
+						<!-- <ul class="flex-container"> -->
+						<li class="count-li"><span id="days"></span>Days</li>
+						<span class="dash"><b>:</b></span>
+	
+						<li class="count-li"><span id="hours"></span>Hrs</li>
+						<span class="dash"><b>:</b></span>
+	
+						<li class="count-li"><span id="minutes"></span>Mins</li>
+						<span class="dash"><b>:</b></span>
+	
+						<li class="count-li"><span id="seconds"></span>Secs</li>
+	
+						<!-- </ul> -->
+					</div>
+				</p>
+
+				</div>
+
+				<div class="bid_or_edit_delete">
+					<br><br>
+					{% if request.session.edit_access %}
+					<a href="{% url 'app:product_edit' product.id %}" class="btn btn-outline-primary" style="width: 50%;">Edit</a>
+					<a href="{% url 'app:product_delete' product.id %}" class="btn btn-outline-danger" style="width: 50%;">DELETE</a>
+					{% else %}
+					{% if product.is_bid_running %}
+						<a href="{% url 'app:auction' product.id %}" class="btn btn-outline-success d-flex justify-content-center" style="width: 100%;">Place your bid</a>
+					{% else %}
+						<a href="{% url 'app:auction' product.id %}" class="disabled btn btn-outline-success d-flex justify-content-center" style="width: 100%;">Place your bid</a>
+					{% endif %}
+					{% endif %}
+				</div>
+			</div>
+
 		</div>
 	</div>
-	<div class="col-md-4"></div>
-	<div class="col-md-4 col-sm-12">
-		<div class="bidTable">
-			<h6 class="bid-table-info">Bids on {{ product }}</h6>
-			<p class="winner">Winner is <span><i>{{ request.session.winner }}</i></span></p>
-			<table>
-				<tr>
-					<th>Placed By</th>
-					<th>Amount</th>
-				</tr>
-				{% for bid in bids %}
-					<tr>
-						<td>{{ bid.placed_by }}</td>
-						<td>{{ bid.amount }}</td>
-					</tr>
-				{% endfor %}
-			</table>
-		</div>
-	</div>
-</div>
+</section>
+
 
 
 <script type="text/javascript">
@@ -147,4 +275,40 @@
 	}, 1000)
 
 </script>
+
+
+
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".swiper_thumb", {
+      spaceBetween: 10,
+      slidesPerView: 4,
+      speed: 300,
+      loop: true,
+      freeMode: true,
+      watchSlidesProgress: true,
+      ClickAble: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+    var swiper2 = new Swiper(".swiper_large_preview", {
+      spaceBetween: 10,
+      slidesPerView: 1,
+      // speed: 300,
+      speed: 0,
+      loop: true,
+      // freeMode: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      thumbs: {
+        swiper: swiper,
+      },
+    });
+  </script>
+
 {% endblock %}
