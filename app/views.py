@@ -5,9 +5,12 @@ from django.contrib.auth.decorators import login_required
 from users.forms import CustomUserCreationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
+from django.http import JsonResponse
 
 from django.db.models import Max
-from .models import Product, Auction
+from .models import (
+    Product, Auction, ProductImage
+)
 from .forms import ProductForm, AuctionForm
 
 from django.contrib import messages
@@ -83,15 +86,30 @@ def dashboard(request):
 
 @login_required
 def add_product(request):
-	if request.method == 'POST':
-		form = ProductForm(request.POST, request.FILES)
+	if request.headers.get('x-requested-with') == 'XMLHttpRequest' :
+		form = ProductForm(request.POST)
+		images = request.FILES.getlist('images')
 		if form.is_valid():
 			p = form.save(commit=False)
 			p.created_by = request.user
 			p.save()
+
+			# now save the product images
+			try:
+				for image in images:
+					image = ProductImage.objects.create(image=image)
+					image.product = p
+					image.save()
+			except Exception as e:
+				print(e)
 			messages.add_message(request, messages.INFO,
 				f'Your Product is up for bidding !!!')
-			return redirect(reverse('app:user_dashboard'))
+			# return redirect(reverse('app:user_dashboard'))
+			data = {
+				'message': 'SUCCESS',
+				'success_url': f'/product/detail/{p.id}/'
+			}
+			return JsonResponse(data)
 	else:
 		form = ProductForm()
 	return render(request, 'app/add_product.html', {'form': form})

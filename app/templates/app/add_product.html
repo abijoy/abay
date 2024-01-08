@@ -9,13 +9,118 @@
 
 
 		<!-- no more gooling how to center a div; here comes the flexbox -->
-		<div class="d-md-flex justify-content-center">
-			<form method="post" enctype="multipart/form-data">
-			  {% csrf_token %}
-			  {{ form|crispy }}
-			  <button type="submit" class="btn btn-success">Add Item</button>
-			</form>
-		</div>
+		<!-- <div class="d-md-flex justify-content-center"> -->
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 col-lg-2"></div>
+					<div class="col-md-8 col-lg-8">
+						<form method="post" enctype="multipart/form-data" id="blog_form">
+						{% csrf_token %}
+						{{ form|crispy }}
+						<br>
+						<h3>Product Photos</h3>
+							<div id="gallery">
+								<div id="gallery-content">
+									<div class="img-wrapper file-upload-button">
+										<div class="form-group">
+											<label for="image-upload">Upload photos
+												<br>
+												<i class="bi bi-cloud-upload"></i>
+											</label>
+											<input class="form-control-file" type="file" src="" alt="" accept="image/*" id="image-upload" class="image_upload form-control" multiple>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br><br>
+							<div class="form-group ">
+								<button type="submit" id="submit_btn" class="btn btn-success"> submit </button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 
+
+		<script>
+			const gallery = document.getElementById('gallery-content');
+			const fileInput = document.getElementById('image-upload');
+			let image_Files = new Map();
+		
+			function removeThisImage(e) {
+				element = e.target;
+				element.parentElement.remove()
+		
+				// remove the image from the hashset
+				image_Files.delete(element);
+			}
+		
+			fileInput.addEventListener('change', (e) => {
+				const files = e.target.files;
+				for(let i=0; i<files.length; i++) {
+		
+					file = files[i];
+					const imgURL = URL.createObjectURL(file);
+		
+					const imgWrapper = document.createElement('div');
+					imgWrapper.classList.add('img-wrapper');
+		
+					const imageRemover = document.createElement('div');
+					imageRemover.classList.add('cross');
+					imageRemover.textContent = 'x';
+					imageRemover.onclick = removeThisImage;
+		
+					image_Files[imageRemover] = file;
+		
+					const img = document.createElement('img');
+					img.src = imgURL;
+		
+					imgWrapper.appendChild(img);
+					imgWrapper.appendChild(imageRemover);
+		
+					// gallery.append(imgWrapper);
+					gallery.insertBefore(imgWrapper, gallery.firstElementChild.nextSibling);
+		
+					image_Files.set(imageRemover, file);
+				}
+			});
+		
+		
+			// Get CSRF token from cookie
+			function getCookie(name) {
+				let token = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+				return token ? token.pop() : ''; 
+			}
+		
+			const btn = document.querySelector('#submit_btn');
+			btn.addEventListener('click', e => {
+				e.preventDefault();
+				const csrftoken = getCookie('csrftoken');
+				const myForm = document.querySelector('#blog_form');
+		
+				let imageFiles = [...image_Files.values()]
+				let formData = new FormData(myForm)
+		
+				for(let i=0; i < imageFiles.length; i++) {
+					formData.append('images', imageFiles[i]);
+				}
+		
+				fetch("{% url 'app:add_product' %}", {
+					method: 'POST',
+					headers:{
+						'Accept': 'application/json',
+						'X-Requested-With': 'XMLHttpRequest',
+						'X-CSRFToken': csrftoken,
+					},
+					body: formData
+		
+				}).then(response => {
+					return response.json()
+				}).then(data => {
+					return window.location.replace(data['success_url'])
+				});
+			});
+		
+		</script>
 
 {% endblock %}
