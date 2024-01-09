@@ -41,9 +41,7 @@
 			        	<a href="{% url 'app:product_detail' p.id %}" class="cardLink">
 				        <div class="card shadow1" style="margin-bottom: 20px;">
 
-				        	{% if p.photo %}
-				        		<img class="card-img-top" src="{{ p.photo.url }}" style="height: 200px;">
-				        	{% endif %}
+							<img class="card-img-top" src="{{ p.product_images.first.image.url }}" style="height: 200px;" loading="lazy">
 
 							{% if p.is_bid_running %}
 								<span class="status">Running</span>
