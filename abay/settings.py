@@ -1,8 +1,11 @@
 
 import os
-from decouple import config
+# from decouple import config
 
 # import django_heroku
+
+from dotenv import load_dotenv
+load_dotenv()
 
 from pathlib import Path
 
@@ -12,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -158,8 +161,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # django_heroku.settings(locals())
 
-from dotenv import load_dotenv
-load_dotenv()
+
 
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
