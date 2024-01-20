@@ -1,3 +1,11 @@
 from django.test import TestCase
+from django.urls import resolve
+from .views import dashboard
 
-# Create your tests here.
+
+class DashBoardPageTestCase(TestCase):
+    def test_dashboard_page_resolves(self):
+        view = resolve('/dashboard/')
+        self.assertEqual(
+            view.func.__name__, dashboard.__name__
+        )
