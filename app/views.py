@@ -114,6 +114,7 @@ def add_product(request):
 		form = ProductForm()
 	return render(request, 'app/add_product.html', {'form': form})
 
+@login_required
 def product_detail(request, id):
 	request.session['winner'] = 'yet to decide'
 	request.session['edit_access'] = False
@@ -264,6 +265,7 @@ def bids(request):
 			if existed_bid:
 				if bid_amount > float(existed_bid.amount):
 					existed_bid.amount = bid_amount
+					existed_bid.placed_datetime = timezone.now()
 					existed_bid.save()
 					messages.add_message(request, messages.SUCCESS,
 						f'Successfully updated your bid.'	  
@@ -309,7 +311,19 @@ def bids(request):
 		# elif request.method == 'PATCH':
 		# 	print(request.pa)
 	else:
-		pass
+		return render(request, 'app/bids_list.html')
+	
+
+def bids_list(request, product_id):
+	product = get_object_or_404(Product, pk=product_id)
+	bids = Auction.objects.filter(product=product)
+
+	context = {
+		'product': product,
+		'bids': bids
+	}
+
+	return render(request, 'app/bids_list.html', context=context)
 
 @login_required
 def user_dashboard(request):

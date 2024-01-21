@@ -1,0 +1,41 @@
+{% extends 'app_base.html' %}
+
+{% block title %}
+  Bids List
+{% endblock %}   
+
+{% block content %}
+
+    <div class="product-detail">
+        <h3>
+            Bids on Item:
+            <a href="{% url 'app:product_detail' product.id %}">
+                {{ product.name }}
+            </a>
+        </h3>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Position</th>
+            <th scope="col">User</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Time</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for bid in bids  %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ bid.placed_by }}</td>
+                <td>{{ bid.amount }}</td>
+                <td>{{ bid.placed_datetime }}</td>
+            </tr>
+            {% empty %}
+                No bids yet.
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

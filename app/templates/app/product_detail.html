@@ -204,7 +204,7 @@
 					- i7 4790 Prozessor - Asrock Mainboard - 250 GB Crucial SSD - 16 GB RAM Corsair DDR3 1600 mit 9-9-9-24 - GTX. 
 					<a href="#">See more</a>
 				</p>
-				<p> {{ product.auction_set.all.count }} bids</p>
+				<p> <a href="{% url 'app:bids-list' product.id %}"> {{ product.auction_set.all.count }} bids </a></p>
 				<div id="end-datetime">
 
 					<h4 id="headline">Bid Ends In</h4>
