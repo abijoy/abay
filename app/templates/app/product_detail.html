@@ -122,6 +122,21 @@
 
 {% block content %}
 
+  <!-- show messages from the server if any -->
+  {% if messages %}
+  <div class="messages">
+	  {% for message in messages %}
+	  <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
+		{{ message }}
+		<button type="button" class="msg-close" aria-label="Close" style="float: right;">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	  {% endfor %}
+  </div>
+  <br><br>
+  {% endif %}
+
 
 <section class="clickble_slider1">
 	<div class="container py-4">
@@ -185,11 +200,11 @@
 					<p class="card-text small">Posted by: {{ product.created_by  }} on {{ product.creation_date|timezone:"Asia/Dhaka" }}</p>
 				<h4>Description</h4>
 				<p>
-					<!-- {{ product.description }} -->
+					{{ product.description }}
 					- i7 4790 Prozessor - Asrock Mainboard - 250 GB Crucial SSD - 16 GB RAM Corsair DDR3 1600 mit 9-9-9-24 - GTX. 
 					<a href="#">See more</a>
 				</p>
-
+				<p> {{ product.auction_set.all.count }} bids</p>
 				<div id="end-datetime">
 
 					<h4 id="headline">Bid Ends In</h4>
@@ -237,14 +252,19 @@
 								  </button>
 								</div>
 								<div class="modal-body">
-								  <form>
+								  <form id="bid_form">
+										{% csrf_token %}
 										<div class="form-group">
 											<label for="bid_amount">Your max bid</label>
-											<input type="number" class="form-control" id="bid_amount" placeholder="Enter BDT. 10010 or more">
+											<input type="number" class="form-control" id="bid_amount" 
+											placeholder="Enter BDT. 10010 or more" 
+											value="{% if logged_in_user_bid %}{{logged_in_user_bid.amount}}{% endif %}">
 										</div>
 
 										<div class="form-group">
-											<input type="submit" class="form-control btn btn-primary" style="width: 100%;" value="Bid">
+											<button type="submit" id="submit_btn" class="form-control btn btn-primary" style="width: 100%;">
+												Bid
+											</button>
 										</div>
 								  </form>
 								</div>
@@ -254,7 +274,11 @@
 
 
 						<button type="button" class="btn btn-outline-success d-flex justify-content-center"  data-toggle="modal" data-target="#exampleModalCenter" style="width: 100%;">
-							Place your bid
+							{% if logged_in_user_bid %}
+								Update your bid
+							{% else %}
+								Place your bid
+							{% endif %}
 						</button>
 <!-- 
 						<a href="{% url 'app:auction' product.id %}" class="btn btn-outline-success d-flex justify-content-center" style="width: 100%;">Place your bid</a> -->
@@ -359,6 +383,43 @@
 
 
 	// TODO: add scripts to handle bid amount input
+
+	// Get CSRF token from cookie
+	function getCookie(name) {
+		let token = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+		return token ? token.pop() : ''; 
+	}
+
+	const btn = document.querySelector('#submit_btn');
+	btn.addEventListener('click', e => {
+		e.preventDefault();
+		const csrftoken = getCookie('csrftoken');
+		const myForm = document.querySelector('#bid_form');
+		const bid_amount = document.querySelector('#bid_amount')
+
+		let formData = new FormData(myForm)
+		console.log(formData)
+		formData.append('product_id', "{{ product.id }}")
+		formData.append('bid_amount', bid_amount.value)
+
+		const url = "{% url 'app:bids' %}"
+		fetch(url, {
+			method: 'POST',
+			headers:{
+				'Accept': 'application/json',
+				'X-Requested-With': 'XMLHttpRequest',
+				'X-CSRFToken': csrftoken,
+			},
+			body: formData
+
+		}).then(response => {
+			return response.json()
+		}).then(data => {
+			console.log(data)
+			return window.location.replace(data['success_url'])
+		});
+	});
+
   </script>
 
 {% endblock %}

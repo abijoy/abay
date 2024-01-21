@@ -132,7 +132,14 @@ def product_detail(request, id):
 	if p.created_by == request.user:
 		request.session['edit_access'] = True
 	bids = Auction.objects.filter(product=p).order_by('-amount')
-	context = {'product': p, 'bids': bids,}
+	logged_in_user_bid = Auction.objects.filter(product=p, placed_by=request.user).first()
+
+	context = {
+		'product': p,
+		'bids': bids,
+		'logged_in_user_bid': logged_in_user_bid
+	}
+
 	local_datetime = timezone.now() + timedelta(hours=6)
 	if p.auc_end_time < local_datetime:
 		biggest_bid = Auction.objects.filter(product=p).aggregate(Max('amount'))
@@ -244,12 +251,65 @@ def auction(request, p_id):
 			))
 
 @login_required
-def bid(request):
+def bids(request):
 	if request.headers.get('x-requested-with') == 'XMLHttpRequest' :
-		pass
+		if request.method == 'POST':
+			bid_amount = float(request.POST.get('bid_amount'))
+			product_id = int(request.POST.get('product_id'))
+			product = Product.objects.filter(id=product_id).first()
+
+			# check if bid already exists. If exists then update
+			existed_bid = Auction.objects.filter(product=product, placed_by=request.user).first()
+
+			if existed_bid:
+				if bid_amount > float(existed_bid.amount):
+					existed_bid.amount = bid_amount
+					existed_bid.save()
+					messages.add_message(request, messages.SUCCESS,
+						f'Successfully updated your bid.'	  
+					)
+
+					data = {
+						'message': 'SUCCESS',
+						'success_url': f'/product/detail/{product_id}/'
+					}
+					return JsonResponse(data)
+
+				else:
+					messages.add_message(request, messages.WARNING,
+						f'Update bid should be higher than current bid amount.')
+					
+					data = {
+						'message': 'FAILED',
+						'success_url': f'/product/detail/{product_id}/'
+					}
+					return JsonResponse(data)
+			else:
+				try:
+					a = Auction.objects.create(
+						product=product,
+						amount=bid_amount,
+						placed_by=request.user
+					)
+					a.save()
+					print(a)
+					data = {
+						'message': 'SUCCESS',
+						'success_url': f'/product/detail/{product_id}/'
+					}
+					return JsonResponse(data)
+				except Exception as e:
+					print(e)
+					data = {
+						'message': 'FAILED',
+						'success_url': f'/product/detail/{product_id}/'
+					}
+					return JsonResponse(data)
+			
+		# elif request.method == 'PATCH':
+		# 	print(request.pa)
 	else:
 		pass
-
 
 @login_required
 def user_dashboard(request):
