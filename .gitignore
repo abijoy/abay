@@ -8,3 +8,4 @@ uploads/
 db.sqlite3
 .env
 *copy.html
+staticfiles/

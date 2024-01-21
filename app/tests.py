@@ -4,6 +4,13 @@ from .views import dashboard
 
 
 class DashBoardPageTestCase(TestCase):
+
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
     def test_dashboard_page_resolves(self):
         view = resolve('/dashboard/')
         self.assertEqual(

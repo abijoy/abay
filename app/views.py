@@ -244,6 +244,14 @@ def auction(request, p_id):
 			))
 
 @login_required
+def bid(request):
+	if request.headers.get('x-requested-with') == 'XMLHttpRequest' :
+		pass
+	else:
+		pass
+
+
+@login_required
 def user_dashboard(request):
 	products_by_user = Product.objects.filter(created_by=request.user).order_by('-auc_end_time', '-creation_date')
 	bidded_items = Auction.objects.filter(placed_by=request.user).order_by('product')
