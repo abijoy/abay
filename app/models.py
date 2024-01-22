@@ -59,3 +59,19 @@ class Auction(models.Model):
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, default=None, null=True, blank=True, related_name='product_images')
     image = models.ImageField(upload_to='uploads')
+
+
+NOTIFICATION_TYPES = [
+	('outbid', 'Out Bid'),
+	('win', 'Win')
+]
+
+class Notification(models.Model):
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='notifications')
+	product = models.ForeignKey(Product, on_delete=models.CASCADE)
+	bid = models.ForeignKey(Auction, null=True, blank=True, on_delete=models.CASCADE)
+	seen = models.BooleanField(default=False)
+	type = models.CharField(max_length=15, choices=NOTIFICATION_TYPES, default='outbid', null=True, blank=True)
+	description = models.TextField(null=True, blank=True)
+	created_at = models.DateTimeField(auto_now_add=True)
+

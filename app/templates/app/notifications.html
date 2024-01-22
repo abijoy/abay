@@ -1,0 +1,48 @@
+{% extends 'app_base.html' %}
+
+{% block title %}
+  Bids List
+{% endblock %}   
+
+{% block content %}
+
+<div class="notifications">
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">unread</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link"href="#">All</a>
+        </li>
+    </ul>
+
+
+    {% for n in notifications %}
+        {% if n.type == 'outbid' %}
+            <div class="notification-item">
+                <p>Someone just outbid you by placing a bid of {{ n.bid.amount }} on 
+                    <a href="{% url 'app:product_detail' n.product.id %}">{{ n.product }} </a>
+                </p>
+
+                <a class="" href="{% url 'app:product_detail' n.product.id %}"> Update your bid</a>
+
+                
+                <!-- TODO: add mark as read functionality -->
+
+                <span style="float: right;">
+                    <i class="bi bi-check"></i>
+                    mark as read
+                </span>
+            </div>
+
+        {% endif %}
+
+    {% empty %}
+        No notifications
+    {% endfor %}
+</div>
+
+
+{% endblock %}

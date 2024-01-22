@@ -15,4 +15,5 @@ urlpatterns = [
     path('logout/', views.logout_user, name='logout'),
     path('bids/', views.bids, name='bids'),
     path('product/bids/<int:product_id>/', views.bids_list, name='bids-list'),
+    path('notifications/', views.notifications, name='notifications'),
 ]

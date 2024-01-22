@@ -9,7 +9,7 @@ from django.http import JsonResponse
 
 from django.db.models import Max
 from .models import (
-    Product, Auction, ProductImage
+    Product, Auction, ProductImage, Notification
 )
 from .forms import ProductForm, AuctionForm
 
@@ -345,6 +345,15 @@ def bids_list(request, product_id):
 	}
 
 	return render(request, 'app/bids_list.html', context=context)
+
+
+@login_required
+def notifications(request):
+	notifications_all = Notification.objects.all().order_by('-created_at')
+	context = {
+		'notifications': notifications_all
+	}
+	return render(request, 'app/notifications.html', context=context)
 
 @login_required
 def user_dashboard(request):

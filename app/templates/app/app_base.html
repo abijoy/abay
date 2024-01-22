@@ -127,6 +127,15 @@
               </li>
 
               <li class="nav-item">
+                <a class="nav-link" href="{% url 'app:notifications' %}">
+                    Notifications <span class="badge badge-light">{{ request.user.notifications.all.count }}</span>
+                </a>
+              </li>
+
+
+              
+
+              <li class="nav-item">
                 <a class="nav-link" href="#">{{ user }}
                 {% if user.email_confirmation %}
                   <span class="badge badge-success">Verified</span>

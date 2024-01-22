@@ -154,3 +154,14 @@ h1 #headline{
 	border: 1px solid gray;
 	border-radius: 0.4rem;
   }
+
+  .notifications {
+
+  }
+
+  .notification-item {
+	padding: 8px;
+	border: 1px solid rgb(194, 188, 231);
+	border-radius: 0.4rem;
+	background-color: antiquewhite;
+  }
