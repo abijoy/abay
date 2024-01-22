@@ -147,3 +147,10 @@ h1 #headline{
 	font-size: 1.1rem;
 	padding: 1.4rem;
   }
+
+  .bids-list-preview-img {
+	height: 59px;
+	width: 78px;
+	border: 1px solid gray;
+	border-radius: 0.4rem;
+  }

@@ -7,12 +7,30 @@
 {% block content %}
 
     <div class="product-detail">
-        <h3>
-            Bids on Item:
+        <h2>Bids History</h2>
+        <!-- <h5 style="padding-top: 1.1rem; padding-bottom: 1.1rem;">
             <a href="{% url 'app:product_detail' product.id %}">
+                <img class="bids-list-preview-img" src="{{ product.product_images.first.image.url }}" alt="" >
                 {{ product.name }}
             </a>
-        </h3>
+        </h5> -->
+
+        <a href="{% url 'app:product_detail' product.id %}">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                <div class="col-sm-4">
+                    <img class="card-img" src="{{ product.product_images.first.image.url }}" alt="" style="height: 65px; width: 79px;">
+                </div>
+                <div class="col-sm-8">
+                    <div class="card-body" style="padding: 0;">
+                    <!-- <h5 class="card-title"> -->
+                        {{ product.name }}
+                    <!-- </h5> -->
+                    </div>
+                </div>
+                </div>
+            </div>
+        </a>
 
         <div class="bid-status">
             {% if product.is_bid_running %}
