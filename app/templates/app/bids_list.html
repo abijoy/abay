@@ -13,29 +13,51 @@
                 {{ product.name }}
             </a>
         </h3>
+
+        <div class="bid-status">
+            {% if product.is_bid_running %}
+                <div class="running">
+
+                </div>
+            {% else %}
+                <div class="ended">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    Bidding on this item has ended
+                </div>
+            {% endif %}
+        </div>
     </div>
 
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th scope="col">Position</th>
-            <th scope="col">User</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Time</th>
-        </tr>
-        </thead>
-        <tbody>
-            {% for bid in bids  %}
-            <tr>
-                <th scope="row">{{ forloop.counter }}</th>
-                <td>{{ bid.placed_by }}</td>
-                <td>{{ bid.amount }}</td>
-                <td>{{ bid.placed_datetime }}</td>
-            </tr>
-            {% empty %}
-                No bids yet.
-            {% endfor %}
-        </tbody>
-    </table>
+    <hr>
+
+    <div id="bids_list">
+
+        {% if bids  %}
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Position</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Time</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for bid in bids  %}
+                            <tr class="{% if bid.placed_by == request.user %}table-active{% endif %}">
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ bid.placed_by }}</td>
+                                <td>{{ bid.amount }}</td>
+                                <td>{{ bid.placed_datetime }}</td>
+                            </tr>
+                    {% empty %}
+                        No bids yet.
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h6 class="text-center">No bids found.</h6>
+        {% endif %}
+    </div>
 
 {% endblock %}

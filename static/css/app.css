@@ -138,4 +138,12 @@ h1 #headline{
 	object-fit: cover;
   }
   
-  
+  .ended {
+	background-color: red;
+	color: white;
+	border: 1px solid red;
+	border-radius: 4px;
+	/* width: 60%; */
+	font-size: 1.1rem;
+	padding: 1.4rem;
+  }

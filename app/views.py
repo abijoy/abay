@@ -316,7 +316,7 @@ def bids(request):
 
 def bids_list(request, product_id):
 	product = get_object_or_404(Product, pk=product_id)
-	bids = Auction.objects.filter(product=product)
+	bids = Auction.objects.filter(product=product).order_by('-amount')
 
 	context = {
 		'product': product,
