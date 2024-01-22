@@ -317,10 +317,15 @@ def bids(request):
 def bids_list(request, product_id):
 	product = get_object_or_404(Product, pk=product_id)
 	bids = Auction.objects.filter(product=product).order_by('-amount')
-
+	bid_running = product.is_bid_running
+	winner = ''
+	if not bid_running and bids:
+		winner = bids[0].placed_by
 	context = {
 		'product': product,
-		'bids': bids
+		'bids': bids,
+		'bid_running': bid_running,
+		'winner': winner,
 	}
 
 	return render(request, 'app/bids_list.html', context=context)

@@ -24,6 +24,13 @@
                     <i class="bi bi-exclamation-circle-fill"></i>
                     Bidding on this item has ended
                 </div>
+
+                <div class="bid-winner">
+                    <br>
+                    <p class="font-weight-bold">Winning bid: {{bids.first.amount}} BDT.</p>
+                    <p class="font-weight-bold">Total Bids: {{ bids.count }}</p>
+                </div>
+
             {% endif %}
         </div>
     </div>
@@ -46,7 +53,14 @@
                     {% for bid in bids  %}
                             <tr class="{% if bid.placed_by == request.user %}table-active{% endif %}">
                                 <th scope="row">{{ forloop.counter }}</th>
-                                <td>{{ bid.placed_by }}</td>
+                                <td>
+                                    {{ bid.placed_by }}
+                                    {% if not bid_running %}
+                                        {% if bid.placed_by == winner %}
+                                            <span class="badge badge-success">winner</span>
+                                        {% endif %}
+                                    {% endif %}
+                                </td>
                                 <td>{{ bid.amount }}</td>
                                 <td>{{ bid.placed_datetime }}</td>
                             </tr>
