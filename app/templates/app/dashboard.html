@@ -2,6 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% load tz %}
+{% load humanize %}
 
 {% block title %}
   Dashboard - aBay
@@ -56,6 +57,12 @@
 							<!-- <p class="card-text">{{ p.auc_end_time }}</p> -->
 				            <p class="card-text">{{ p.description  }}</p>
 				            <p class="card-text"><i>Bid starts from</i>: Tk. <span class="text-success"><b>{{ p.min_bid_price|floatformat  }}</b></span></p>
+							{% if p.is_bid_running %}
+								<p class="card-text">{{ p.auctions.all.count }} bids. Time left: {{p.auc_end_time | naturaltime}}</p>
+							{% else %}
+								<p class="card-text">{{ p.auctions.all.count }} bids. Ended: {{p.auc_end_time | naturaltime}}</p>
+							{% endif %}
+							
 							<p class="card-text small">Posted by: {{ p.created_by  }} on {{ p.creation_date|timezone:"Asia/Dhaka" }}</p>
 				            <!-- <a href="{% url 'app:product_detail' p.id %}">Show More</a> -->
 				          </div>

@@ -193,8 +193,14 @@
 			<div class="col-sm-6">
 				<h4>{{ product.name }}</h4>
 				<!-- <h3 class="text-success">Price: </h3> -->
-				<h5 >Price: <span class="text-success">{{ product.min_bid_price  }} BDT</span>
-					<i class="bi bi-info-circle" data-toggle="tooltip" data-placement="top" title="Price is determined by the highest bid."></i>
+				<h5 >Price: <span class="text-success">
+					{% if bids %}
+						{{ bids.first.amount|floatformat:1  }} BDT
+					{% else %}
+						{{ product.min_bid_price|floatformat:1}}
+					{% endif %}
+					</span>
+					<i class="bi bi-info-circle" data-toggle="tooltip" data-placement="top" title="Price is continuously updated based on highest bid."></i>
 				</h5>
 				<div class="lorem_text">
 					<p class="card-text small">Posted by: {{ product.created_by  }} on {{ product.creation_date|timezone:"Asia/Dhaka" }}</p>
@@ -204,7 +210,7 @@
 					- i7 4790 Prozessor - Asrock Mainboard - 250 GB Crucial SSD - 16 GB RAM Corsair DDR3 1600 mit 9-9-9-24 - GTX. 
 					<a href="#">See more</a>
 				</p>
-				<p> <a href="{% url 'app:bids-list' product.id %}"> {{ product.auction_set.all.count }} bids </a></p>
+				<p> <a href="{% url 'app:bids-list' product.id %}"> {{ product.auctions.all.count }} bids </a></p>
 				<div id="end-datetime">
 
 					<h4 id="headline">Bid Ends In</h4>
@@ -257,7 +263,7 @@
 										<div class="form-group">
 											<label for="bid_amount">Your max bid</label>
 											<input type="number" class="form-control" id="bid_amount" 
-											placeholder="Enter BDT. 10010 or more" 
+											placeholder="Enter BDT. {{ min_bid_price }} or more" 
 											value="{% if logged_in_user_bid %}{{logged_in_user_bid.amount}}{% endif %}">
 										</div>
 

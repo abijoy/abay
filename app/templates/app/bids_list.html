@@ -45,11 +45,12 @@
 
                 <div class="bid-winner">
                     <br>
-                    <p class="font-weight-bold">Winning bid: {{bids.first.amount}} BDT.</p>
-                    <p class="font-weight-bold">Total Bids: {{ bids.count }}</p>
+                    {% if winner %}
+                        <p class="font-weight-bold">Winning bid: {{bids.first.amount|floatformat:1}} BDT.</p>
+                    {% endif %}
                 </div>
-
             {% endif %}
+            <p class="font-weight-bold">Total Bids: {{ bids.count }}</p>
         </div>
     </div>
 
@@ -79,7 +80,7 @@
                                         {% endif %}
                                     {% endif %}
                                 </td>
-                                <td>{{ bid.amount }}</td>
+                                <td>{{ bid.amount|floatformat:1 }}</td>
                                 <td>{{ bid.placed_datetime }}</td>
                             </tr>
                     {% empty %}

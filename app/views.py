@@ -135,10 +135,15 @@ def product_detail(request, id):
 	bids = Auction.objects.filter(product=p).order_by('-amount')
 	logged_in_user_bid = Auction.objects.filter(product=p, placed_by=request.user).first()
 
+	min_bid_price = p.min_bid_price
+	if bids:
+		min_bid_price = bids[0].amount
+
 	context = {
 		'product': p,
 		'bids': bids,
-		'logged_in_user_bid': logged_in_user_bid
+		'logged_in_user_bid': logged_in_user_bid,
+		'min_bid_price': min_bid_price+1,
 	}
 
 	local_datetime = timezone.now() + timedelta(hours=6)
@@ -261,6 +266,7 @@ def bids(request):
 
 			# check if bid already exists. If exists then update
 			existed_bid = Auction.objects.filter(product=product, placed_by=request.user).first()
+			highest_bid = Auction.objects.filter(product=product).order_by('-amount').first()
 
 			if existed_bid:
 				if bid_amount > float(existed_bid.amount):
@@ -288,6 +294,16 @@ def bids(request):
 					return JsonResponse(data)
 			else:
 				try:
+					if bid_amount < product.min_bid_price or bid_amount < highest_bid.amount :
+						messages.add_message(request, messages.WARNING,
+							f'Bid amount should be higher than the current price of the product')
+						
+						data = {
+							'message': 'FAILED',
+							'success_url': f'/product/detail/{product_id}/'
+						}
+						return JsonResponse(data)
+
 					a = Auction.objects.create(
 						product=product,
 						amount=bid_amount,

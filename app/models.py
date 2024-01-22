@@ -40,12 +40,17 @@ class Product(models.Model):
 		from datetime import timedelta
 		local_dt = timezone.now() + timedelta(hours=6)
 		return self.auc_end_time > local_dt
+	
+	@property
+	def time_left(self):
+		return self.auc_end_time - timezone.now()
+
 
 	def __str__(self):
 		return self.name
 
 class Auction(models.Model):
-	product = models.ForeignKey(Product, on_delete=models.CASCADE)
+	product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='auctions')
 	placed_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 	amount = models.DecimalField(max_digits=10, decimal_places=2)
 	placed_datetime = models.DateTimeField(auto_now_add=True)
