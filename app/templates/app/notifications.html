@@ -22,7 +22,7 @@
     {% for n in notifications %}
         {% if n.type == 'outbid' %}
             <div class="notification-item">
-                <p>Someone just outbid you by placing a bid of {{ n.bid.amount }} on 
+                <p> <i> {{ n.bid.placed_by }} </i> just outbid you by placing a bid of <b>{{ n.bid_amount }}</b> on 
                     <a href="{% url 'app:product_detail' n.product.id %}">{{ n.product }} </a>
                 </p>
 

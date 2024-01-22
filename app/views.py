@@ -294,28 +294,42 @@ def bids(request):
 					return JsonResponse(data)
 			else:
 				try:
-					if bid_amount < product.min_bid_price or bid_amount < highest_bid.amount :
-						messages.add_message(request, messages.WARNING,
-							f'Bid amount should be higher than the current price of the product')
-						
+					if highest_bid:
+						if bid_amount <= highest_bid.amount :
+							messages.add_message(request, messages.WARNING,
+								f'Bid amount should be higher than the current price of the product')
+							
+							data = {
+								'message': 'FAILED',
+								'success_url': f'/product/detail/{product_id}/'
+							}
+							return JsonResponse(data)
+						else:
+							a = Auction.objects.create(
+								product=product,
+								amount=bid_amount,
+								placed_by=request.user
+							)
+							a.save()
+							print(a)
+							data = {
+								'message': 'SUCCESS',
+								'success_url': f'/product/detail/{product_id}/'
+							}
+							return JsonResponse(data)
+					else:
+						a = Auction.objects.create(
+							product=product,
+							amount=bid_amount,
+							placed_by=request.user
+						)
+						a.save()
+						print(a)
 						data = {
-							'message': 'FAILED',
+							'message': 'SUCCESS',
 							'success_url': f'/product/detail/{product_id}/'
 						}
 						return JsonResponse(data)
-
-					a = Auction.objects.create(
-						product=product,
-						amount=bid_amount,
-						placed_by=request.user
-					)
-					a.save()
-					print(a)
-					data = {
-						'message': 'SUCCESS',
-						'success_url': f'/product/detail/{product_id}/'
-					}
-					return JsonResponse(data)
 				except Exception as e:
 					print(e)
 					data = {
@@ -349,7 +363,7 @@ def bids_list(request, product_id):
 
 @login_required
 def notifications(request):
-	notifications_all = Notification.objects.all().order_by('-created_at')
+	notifications_all = Notification.objects.filter(user=request.user).order_by('-created_at')
 	context = {
 		'notifications': notifications_all
 	}

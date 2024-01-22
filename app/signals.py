@@ -13,28 +13,29 @@ from .models import Auction, Notification
 @receiver(post_save, sender=Auction)
 def auction_post_save(sender, instance, created, *args, **kwargs):
     print('--------- SIGNAL ----------')
-    # if created:
-    product = instance.product
-    other_bids = Auction.objects.filter(product=product).exclude(placed_by=instance.placed_by)
-    other_users = []
-    for bid in other_bids:
-        if bid.amount < instance.amount:
-            other_users.append(bid.placed_by)
-    
-    print(other_users)
-    # Now notify the other users who just got outbid
-    for user in other_users:
-        try:
-            n = Notification.objects.create(
-                user=user,
-                product=product,
-                bid=bid
-            )
+    if not created:
+        product = instance.product
+        other_bids = Auction.objects.filter(product=product).exclude(placed_by=instance.placed_by)
+        other_users = []
+        for bid in other_bids:
+            if bid.amount < instance.amount:
+                other_users.append(bid.placed_by)
+        
+        print(other_users)
+        # Now notify the other users who just got outbid
+        for user in other_users:
+            try:
+                n = Notification.objects.create(
+                    user=user,
+                    bid = instance,
+                    product=product,
+                    bid_amount = instance.amount
+                )
 
-            # could be send email here as notificaiton medium
-            # ...
-        except Exception as e:
-            print(e)
+                # could be send email here as notificaiton medium
+                # ...
+            except Exception as e:
+                print(e)
     
 
 

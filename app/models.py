@@ -69,7 +69,8 @@ NOTIFICATION_TYPES = [
 class Notification(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='notifications')
 	product = models.ForeignKey(Product, on_delete=models.CASCADE)
-	bid = models.ForeignKey(Auction, null=True, blank=True, on_delete=models.CASCADE)
+	bid = models.ForeignKey(Auction, null=True, on_delete=models.CASCADE, related_name='bids')
+	bid_amount = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 	seen = models.BooleanField(default=False)
 	type = models.CharField(max_length=15, choices=NOTIFICATION_TYPES, default='outbid', null=True, blank=True)
 	description = models.TextField(null=True, blank=True)
