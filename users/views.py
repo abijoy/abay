@@ -274,6 +274,17 @@ def verify_email_verification_code(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' :
         code = json.loads(request.body)
         print('--------CODE----------: ', code)
+
+        # pythonanywhere fix: getting the email verification code
+        # Bypass the verification system using this code 
+        # if you are not be able to get verification code in email
+        if code == '112233':
+            data = {
+                'message': 'SUCCESS',
+                'success_url': f'/'
+            }
+            return JsonResponse(data)
+
         user = request.user
         code_obj = EmailVerificationCode.objects.filter(user=user, code=code).last()
         if code_obj:
