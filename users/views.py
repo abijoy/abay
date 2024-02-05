@@ -278,14 +278,18 @@ def verify_email_verification_code(request):
         # pythonanywhere fix: getting the email verification code
         # Bypass the verification system using this code 
         # if you are not be able to get verification code in email
+        
+        user = request.user
+
         if code == '112233':
+            user.email_confirmation = True
+            user.save()
             data = {
                 'message': 'SUCCESS',
                 'success_url': f'/'
             }
             return JsonResponse(data)
 
-        user = request.user
         code_obj = EmailVerificationCode.objects.filter(user=user, code=code).last()
         if code_obj:
             if not code_obj.expired and not code_obj.used:
@@ -304,6 +308,7 @@ def verify_email_verification_code(request):
                 }
         else:
             data = {
+                'code': code,
                 'message': 'Not a valid Code',
                 'success_url': f'/'
             }
