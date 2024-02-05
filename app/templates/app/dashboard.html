@@ -54,9 +54,17 @@
 
 				          <div class="card-body ">
 				            <h5 class="card-title"><b>{{ p }}</b></h5>
-							<!-- <p class="card-text">{{ p.auc_end_time }}</p> -->
-				            <p class="card-text">{{ p.description  }}</p>
-				            <p class="card-text"><i>Bid starts from</i>: Tk. <span class="text-success"><b>{{ p.min_bid_price|floatformat  }}</b></span></p>
+							<p class="card-text"><b>Condition: </b> {{ p.condition }}</p>
+				            <p class="card-text"> <b>Category: </b> {{ p.category  }}</p>
+				            <p class="card-text"><b>Price</b>: <span class="text-success"><b>
+								
+								{% if p.auctions.all %}
+									{{ p.auctions.first.amount|floatformat:1  }}
+								{% else %}
+									{{ p.min_bid_price|floatformat:1}}
+								{% endif %}
+								BDT.
+								</b></span></p>
 							{% if p.is_bid_running %}
 								<p class="card-text">{{ p.auctions.all.count }} bids. Time left: {{p.auc_end_time | naturaltime}}</p>
 							{% else %}
