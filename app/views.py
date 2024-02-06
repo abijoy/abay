@@ -168,6 +168,8 @@ def product_edit(request, id):
 	if p.created_by == request.user:
 		if request.method == 'POST':
 			form = ProductForm(request.POST, request.FILES, instance=p)
+			images = request.FILES.getlist('images')
+			print(images)
 			if form.is_valid():
 				form.save()
 				messages.add_message(request, messages.INFO,
