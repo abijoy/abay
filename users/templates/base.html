@@ -62,21 +62,23 @@
 
 {% block app_base %}
     <div class="container">
-        <div class="row">
+
             <!-- add if any messages exits for this page -->
             {% if messages %}
             <div class="messages">
                 {% for message in messages %}
                 <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
                   {{ message }}
-                  <button type="button" class="msg-close" aria-label="Close" style="float: right;">
+                  <button type="button" class="close msg-close" aria-label="Close" style="float: right;">
                     <span aria-hidden="true">&times;</span>
                   </button>
               </div>
                 {% endfor %}
             </div>
-            <br><br>
             {% endif %}
+
+        <div class="row">
+
             <div class="col-md-4 col-lg-4"></div>
             <div class="col-md-4 col-lg-4">
                 {% block content %}

@@ -1,3 +1,6 @@
+from django.contrib.auth import logout
+import json
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -8,7 +11,7 @@ from django.http import (
 )
 
 from django.contrib.auth import (
-    get_user_model, 
+    get_user_model,
     authenticate,
     login
 )
@@ -57,9 +60,9 @@ def login_view(request):
             if user:
                 login(request, user, backend='users.backends.EmailBackend')
                 return HttpResponseRedirect(next)
-            messages.error(request, 'Invalid username or password')
+            messages.warning(request, 'Invalid username or password')
             return redirect('login')
-    
+
     form = LoginForm()
     return render(request, 'registration/login.html', {'form': form})
 
@@ -78,7 +81,6 @@ def home(request):
     ''' if not request.user.email_confirmation else ''
 
     return HttpResponse(text)
-
 
 
 def generate_account_verification_token(user):
@@ -100,7 +102,7 @@ def send_verification_link_via_email(request, token):
 
     msg = EmailMultiAlternatives(
         subject=mail_subject,
-        body='Account Verification Email', 
+        body='Account Verification Email',
         from_email=settings.EMAIL_HOST_USER,
         to=(to_email, )
     )
@@ -139,17 +141,16 @@ def register(request):
             except Exception as e:
                 print(e)
 
-
             # now authenticate the user
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
-            authenticate(username=username, password=password) 
+            authenticate(username=username, password=password)
             # login(request, user)
-            login(request, new_user, backend='django.contrib.auth.backends.ModelBackend')
+            login(request, new_user,
+                  backend='django.contrib.auth.backends.ModelBackend')
 
             # create account verification token and send the link via email
             try:
-
 
                 # Email verification code
                 try:
@@ -197,7 +198,7 @@ def get_client_ip(request):
         ip = request.META.get('REMOTE_ADDR')
     return ip
 
-from django.contrib.auth import logout
+
 def verify_account(request, token=None):
     # logout(request)
     print(get_client_ip(request))
@@ -227,17 +228,17 @@ def verify_account(request, token=None):
             login(request, user, backend='users.backends.EmailBackend')
 
             # add flush message here for account verfication
-            messages.success(request, f'{request.user} is successfully verified!')
+            messages.success(
+                request, f'{request.user} is successfully verified!')
 
-            #TODO: send onboard welcome email
-
+            # TODO: send onboard welcome email
 
             return redirect('app:dashboard')
     return redirect('app:dashboard')
 
 
 def get_email_verification_code(request):
-    if request.headers.get('x-requested-with') == 'XMLHttpRequest' :
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         user = request.user
         if user.is_authenticated:
             # invalid the last code requested by this user
@@ -260,25 +261,23 @@ def get_email_verification_code(request):
             except Exception as e:
                 print(e)
                 return JsonResponse({'message': 'FAILED'}, status=500)
-            
+
     return JsonResponse({'error': 'Unauthorized'}, status=401)
 
 
-from django.http import JsonResponse
-import json
 @login_required
 def verify_email_verification_code(request):
     if request.user.email_confirmation == True:
         messages.success(request, f'{request.user} is already verified!')
         return redirect('/')
-    if request.headers.get('x-requested-with') == 'XMLHttpRequest' :
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         code = json.loads(request.body)
         print('--------CODE----------: ', code)
 
         # pythonanywhere fix: getting the email verification code
-        # Bypass the verification system using this code 
+        # Bypass the verification system using this code
         # if you are not be able to get verification code in email
-        
+
         user = request.user
 
         if code == '112233':
@@ -290,7 +289,8 @@ def verify_email_verification_code(request):
             }
             return JsonResponse(data)
 
-        code_obj = EmailVerificationCode.objects.filter(user=user, code=code).last()
+        code_obj = EmailVerificationCode.objects.filter(
+            user=user, code=code).last()
         if code_obj:
             if not code_obj.expired and not code_obj.used:
                 user.email_confirmation = True
@@ -313,5 +313,5 @@ def verify_email_verification_code(request):
                 'success_url': f'/'
             }
         return JsonResponse(data)
-    
+
     return render(request, 'users/account_verification.html')

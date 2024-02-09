@@ -21,7 +21,7 @@
 			    {% for message in messages %}
 			    <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
 						{{ message }}
-						<button type="button" class="msg-close" aria-label="Close" style="float: right;">
+						<button type="button" class="close msg-close" aria-label="Close" style="float: right;">
 							<span aria-hidden="true">&times;</span>
 						</button>
 				</div>

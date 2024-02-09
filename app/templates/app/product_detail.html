@@ -1,20 +1,19 @@
 {% extends 'app_base.html' %}
 {% load crispy_forms_tags %}
 {% load tz %}
-  
+
 {% block title %}
-  {{ product }} - aBay
-{% endblock %} 
+{{ product }} - aBay
+{% endblock %}
 
 {% block style %}
-	<style type="text/css">
-	
-		.swiper {
+<style type="text/css">
+	.swiper {
 		width: 100%;
 		height: 100%;
-		}
-	
-		.swiper-slide {
+	}
+
+	.swiper-slide {
 		text-align: center;
 		font-size: 18px;
 		background: #fff;
@@ -32,45 +31,45 @@
 		-webkit-align-items: center;
 		align-items: center;
 		cursor: pointer;
-		}
-	
-		.swiper-slide img {
+	}
+
+	.swiper-slide img {
 		display: block;
 		width: 100%;
 		height: 70%;
 		object-fit: cover;
-		}
-	
-		/* .swiper {
+	}
+
+	/* .swiper {
 			width: 100%;
 			height: 30vw;
 			object-fit: cover;
 		} */
-	
-		.swiper_thumb .swiper-slide {
+
+	.swiper_thumb .swiper-slide {
 		opacity: 0.7;
-		}
-	
-		.swiper_thumb .swiper-slide:hover {
+	}
+
+	.swiper_thumb .swiper-slide:hover {
 		opacity: 1;
-		}
-	
-		.swiper_thumb .swiper-slide-thumb-active {
+	}
+
+	.swiper_thumb .swiper-slide-thumb-active {
 		opacity: 1;
 		border: 1px solid #191919;
 		/* border-radius: 1rem; */
-		}
-	
-		.swiper-slide img {
-			display: block;
-			width: 100%;
-			height: 70%;
-			object-fit: cover;
-			user-select: none;
-		}
-	
-		.swiper-button-next,
-		.swiper-button-prev {
+	}
+
+	.swiper-slide img {
+		display: block;
+		width: 100%;
+		height: 70%;
+		object-fit: cover;
+		user-select: none;
+	}
+
+	.swiper-button-next,
+	.swiper-button-prev {
 		color: #191919;
 		background: rgba(255, 255, 255, .8);
 		width: 40px;
@@ -78,64 +77,63 @@
 		border-radius: 50%;
 		box-shadow: 0px 2px 2px #191919;
 		z-index: 9;
-		}
-	
-		.swiper-button-next,
-		.swiper-button-prev::after {
-		font-size: 24px;
-		font-weight: 600;
-		}
-	
-		.swiper-button-prev,
-		.swiper-button-next::after {
-		font-size: 24px;
-		font-weight: 600;
-		}
-	
-		.swiper-button-next {
-		right: 0px;
-		}
-	
-		.swiper-button-prev {
-		left: 0px;
-		}
-	
-		.swiper-button-next:hover {
-		color: #ccc;
-		background: #191919;
-		}
-	
-		.swiper-button-prev:hover {
-		color: #ccc;
-		background: #191919;
-		}
+	}
 
-		/* Hide thumbnail div in mobile devices */
-		@media (max-width: 499px) {
-			.thumbnail-div {
-				display: none; 
-			}
+	.swiper-button-next,
+	.swiper-button-prev::after {
+		font-size: 24px;
+		font-weight: 600;
+	}
+
+	.swiper-button-prev,
+	.swiper-button-next::after {
+		font-size: 24px;
+		font-weight: 600;
+	}
+
+	.swiper-button-next {
+		right: 0px;
+	}
+
+	.swiper-button-prev {
+		left: 0px;
+	}
+
+	.swiper-button-next:hover {
+		color: #ccc;
+		background: #191919;
+	}
+
+	.swiper-button-prev:hover {
+		color: #ccc;
+		background: #191919;
+	}
+
+	/* Hide thumbnail div in mobile devices */
+	@media (max-width: 499px) {
+		.thumbnail-div {
+			display: none;
 		}
-	
-	</style>
+	}
+</style>
 {% endblock %}
 
 {% block content %}
 
-  <!-- show messages from the server if any -->
-  {% if messages %}
-  <div class="messages">
-	  {% for message in messages %}
-	  <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
+<!-- show messages from the server if any -->
+{% if messages %}
+<div class="messages">
+	{% for message in messages %}
+	<div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
 		{{ message }}
-		<button type="button" class="msg-close" aria-label="Close" style="float: right;">
-		  <span aria-hidden="true">&times;</span>
+		<button type="button" class="close msg-close" aria-label="Close" style="float: right;">
+			<span aria-hidden="true">&times;</span>
 		</button>
 	</div>
-	  {% endfor %}
-  </div>
-  <br><br>
-  {% endif %}
+	{% endfor %}
+</div>
+<br><br>
+{% endif %}
 
 
 <section class="clickble_slider1">
@@ -145,23 +143,23 @@
 				<!-- Swiper -->
 				<div class="row">
 					<div class="col-md-12 px-0 py-2">
-					<div class="swiper swiper_large_preview">
-						<div class="swiper-wrapper">
+						<div class="swiper swiper_large_preview">
+							<div class="swiper-wrapper">
 
-							{% for image in product.product_images.all %}
+								{% for image in product.product_images.all %}
 								<div class="swiper-slide">
 									<div class="zoom_img">
 										<img class="img-fluid rounded" loading="lazy" src="{{ image.image.url }}" />
 									</div>
 								</div>
-							{% empty %}
+								{% empty %}
 								No photos
-							{% endfor %}
-							<br> <br>
+								{% endfor %}
+								<br> <br>
+							</div>
+							<div class="swiper-button-next"></div>
+							<div class="swiper-button-prev"></div>
 						</div>
-						<div class="swiper-button-next"></div>
-						<div class="swiper-button-prev"></div>
-					</div>
 					</div>
 
 					<!-- thumnail preview -->
@@ -170,13 +168,13 @@
 							<div class="swiper-wrapper">
 								{% for image in product.product_images.all %}
 
-									<div class="swiper-slide">
-										<div class="zoom_img img-thumbnail">
-											<img class="img-fluid" src="{{ image.image.url }}" />
-										</div>
+								<div class="swiper-slide">
+									<div class="zoom_img img-thumbnail">
+										<img class="img-fluid" src="{{ image.image.url }}" />
 									</div>
+								</div>
 								{% empty %}
-									No photos
+								No photos
 								{% endfor %}
 								<br> <br>
 							</div>
@@ -193,110 +191,120 @@
 			<div class="col-sm-6">
 				<h4>{{ product.name }}</h4>
 				<!-- <h3 class="text-success">Price: </h3> -->
-				<h5 >Price: <span class="text-success">
-					{% if bids %}
-						{{ bids.first.amount|floatformat:1  }} BDT
-					{% else %}
+				<h5>Price: <span class="text-success">
+						{% if bids %}
+						{{ bids.first.amount|floatformat:1 }} BDT
+						{% else %}
 						{{ product.min_bid_price|floatformat:1}}
-					{% endif %}
+						{% endif %}
 					</span>
-					<i class="bi bi-info-circle" data-toggle="tooltip" data-placement="top" title="Price is continuously updated based on highest bid."></i>
+					<i class="bi bi-info-circle" data-toggle="tooltip" data-placement="top"
+						title="Price is continuously updated based on highest bid."></i>
 				</h5>
 				<div class="lorem_text">
-					<p class="card-text small">Posted by: {{ product.created_by  }} on {{ product.creation_date|timezone:"Asia/Dhaka" }}</p>
-				<h4>Description</h4>
-				<p>
-					{{ product.description }}
-					- i7 4790 Prozessor - Asrock Mainboard - 250 GB Crucial SSD - 16 GB RAM Corsair DDR3 1600 mit 9-9-9-24 - GTX. 
-					<a href="#">See more</a>
-				</p>
-				<p> <a href="{% url 'app:bids-list' product.id %}"> {{ product.auctions.all.count }} bids </a></p>
-				<div id="end-datetime">
+					<p class="card-text small">Posted by: {{ product.created_by }} on {{
+						product.creation_date|timezone:"Asia/Dhaka" }}</p>
+					<h4>Description</h4>
+					<p>
+						{{ product.description }}
+						- i7 4790 Prozessor - Asrock Mainboard - 250 GB Crucial SSD - 16 GB RAM Corsair DDR3 1600 mit
+						9-9-9-24 - GTX.
+						<a href="#">See more</a>
+					</p>
+					<p> <a href="{% url 'app:bids-list' product.id %}"> {{ product.auctions.all.count }} bids </a></p>
+					<div id="end-datetime">
 
-					<h4 id="headline">Bid Ends In</h4>
-					<div id="countdown">
-						<!-- <ul class="flex-container"> -->
-						<li class="count-li"><span id="days"></span>Days</li>
-						<span class="dash"><b>:</b></span>
-	
-						<li class="count-li"><span id="hours"></span>Hrs</li>
-						<span class="dash"><b>:</b></span>
-	
-						<li class="count-li"><span id="minutes"></span>Mins</li>
-						<span class="dash"><b>:</b></span>
-	
-						<li class="count-li"><span id="seconds"></span>Secs</li>
-	
-						<!-- </ul> -->
+						<h4 id="headline">Bid Ends In</h4>
+						<div id="countdown">
+							<!-- <ul class="flex-container"> -->
+							<li class="count-li"><span id="days"></span>Days</li>
+							<span class="dash"><b>:</b></span>
+
+							<li class="count-li"><span id="hours"></span>Hrs</li>
+							<span class="dash"><b>:</b></span>
+
+							<li class="count-li"><span id="minutes"></span>Mins</li>
+							<span class="dash"><b>:</b></span>
+
+							<li class="count-li"><span id="seconds"></span>Secs</li>
+
+							<!-- </ul> -->
+						</div>
+						</p>
+
 					</div>
-				</p>
 
-				</div>
-
-				<div class="bid_or_edit_delete">
-					<br><br>
-					{% if request.session.edit_access %}
-					<a href="{% url 'app:product_edit' product.id %}" class="btn btn-outline-primary" style="width: 50%;">Edit</a>
-					<a href="{% url 'app:product_delete' product.id %}" class="btn btn-outline-danger" style="width: 50%;">DELETE</a>
-					{% else %}
-					{% if product.is_bid_running %}
+					<div class="bid_or_edit_delete">
+						<br><br>
+						{% if request.session.edit_access %}
+						<a href="{% url 'app:product_edit' product.id %}" class="btn btn-outline-primary"
+							style="width: 50%;">Edit</a>
+						<a href="{% url 'app:product_delete' product.id %}" class="btn btn-outline-danger"
+							style="width: 50%;">DELETE</a>
+						{% else %}
+						{% if product.is_bid_running %}
 
 
 						<!-- Button trigger modal -->
 
 
-  
+
 						<!-- Modal -->
 
-						<div id="exampleModalCenter" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="display: none; padding-right: 15px;">
+						<div id="exampleModalCenter" class="modal fade show" tabindex="-1" role="dialog"
+							aria-labelledby="exampleModalCenterTitle" style="display: none; padding-right: 15px;">
 							<div class="modal-dialog modal-dialog-centered" role="document">
-							  <div class="modal-content">
-								<div class="modal-header">
-								  <h5 class="modal-title" id="exampleModalCenterTitle">Place your bid</h5>
-								  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">×</span>
-								  </button>
-								</div>
-								<div class="modal-body">
-								  <form id="bid_form">
-										{% csrf_token %}
-										<div class="form-group">
-											<label for="bid_amount">Your max bid</label>
-											<input type="number" class="form-control" id="bid_amount" 
-											placeholder="Enter BDT. {{ min_bid_price }} or more" 
-											value="{% if logged_in_user_bid %}{{logged_in_user_bid.amount}}{% endif %}">
-										</div>
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalCenterTitle">Place your bid</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">×</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<form id="bid_form">
+											{% csrf_token %}
+											<div class="form-group">
+												<label for="bid_amount">Your max bid</label>
+												<input type="number" class="form-control" id="bid_amount"
+													placeholder="Enter BDT. {{ min_bid_price }} or more"
+													value="{% if logged_in_user_bid %}{{logged_in_user_bid.amount}}{% endif %}">
+											</div>
 
-										<div class="form-group">
-											<button type="submit" id="submit_btn" class="form-control btn btn-primary" style="width: 100%;">
-												Bid
-											</button>
-										</div>
-								  </form>
+											<div class="form-group">
+												<button type="submit" id="submit_btn"
+													class="form-control btn btn-primary" style="width: 100%;">
+													Bid
+												</button>
+											</div>
+										</form>
+									</div>
 								</div>
-							  </div>
 							</div>
 						</div>
 
 
-						<button type="button" class="btn btn-outline-success d-flex justify-content-center"  data-toggle="modal" data-target="#exampleModalCenter" style="width: 100%;">
+						<button type="button" class="btn btn-outline-success d-flex justify-content-center"
+							data-toggle="modal" data-target="#exampleModalCenter" style="width: 100%;">
 							{% if logged_in_user_bid %}
-								Update your bid
+							Update your bid
 							{% else %}
-								Place your bid
+							Place your bid
 							{% endif %}
 						</button>
-<!-- 
+						<!-- 
 						<a href="{% url 'app:auction' product.id %}" class="btn btn-outline-success d-flex justify-content-center" style="width: 100%;">Place your bid</a> -->
-					{% else %}
-						<a href="{% url 'app:auction' product.id %}" class="disabled btn btn-outline-success d-flex justify-content-center" style="width: 100%;">Place your bid</a>
-					{% endif %}
-					{% endif %}
+						{% else %}
+						<a href="{% url 'app:auction' product.id %}"
+							class="disabled btn btn-outline-success d-flex justify-content-center"
+							style="width: 100%;">Place your bid</a>
+						{% endif %}
+						{% endif %}
+					</div>
 				</div>
-			</div>
 
+			</div>
 		</div>
-	</div>
 </section>
 
 
@@ -304,11 +312,11 @@
 <script type="text/javascript">
 	var datetime = new Date('{{ product.auc_end_time|date:"D, d M Y H:i:s"}}')
 	const second = 1000,
-		  minute = second * 60,
-		  hour = minute * 60,
-		  day = hour * 24;
+		minute = second * 60,
+		hour = minute * 60,
+		day = hour * 24;
 	// console.log(datetime.getTime() - new Date().getTime())
-	let countDown = setInterval(function() {
+	let countDown = setInterval(function () {
 
 		// Get today's date and time
 		let now = new Date().getTime();
@@ -330,22 +338,22 @@
 
 		// render the values on html tags
 		document.getElementById("days").innerText = day1
-	    document.getElementById("hours").innerText = hours1
-	    document.getElementById("minutes").innerText = minutes1
+		document.getElementById("hours").innerText = hours1
+		document.getElementById("minutes").innerText = minutes1
 		document.getElementById("seconds").innerText = seconds1
 
 
 		// If the count down is over, write some text 
 		if (distance < 0) {
-		  
-		  document.getElementById("end-datetime").innerHTML = "<b><i>Auction Ended</i></b>";
 
-		  document.getElementById("days").innerText = '00'
-		  document.getElementById("hours").innerText = '00'
-		  document.getElementById("minutes").innerText = '00'
-		  document.getElementById("seconds").innerText = '00'
-		  
-		  clearInterval(countDown);
+			document.getElementById("end-datetime").innerHTML = "<b><i>Auction Ended</i></b>";
+
+			document.getElementById("days").innerText = '00'
+			document.getElementById("hours").innerText = '00'
+			document.getElementById("minutes").innerText = '00'
+			document.getElementById("seconds").innerText = '00'
+
+			clearInterval(countDown);
 		}
 
 	}, 1000)
@@ -355,36 +363,36 @@
 
 
 
-  <!-- Initialize Swiper -->
-  <script>
-    var swiper = new Swiper(".swiper_thumb", {
-      spaceBetween: 10,
-      slidesPerView: 4,
-      speed: 300,
-      loop: true,
-      freeMode: true,
-      watchSlidesProgress: true,
-      ClickAble: true,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
-    var swiper2 = new Swiper(".swiper_large_preview", {
-      spaceBetween: 10,
-      slidesPerView: 1,
-      // speed: 300,
-      speed: 0,
-      loop: true,
-      // freeMode: true,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      thumbs: {
-        swiper: swiper,
-      },
-    });
+<!-- Initialize Swiper -->
+<script>
+	var swiper = new Swiper(".swiper_thumb", {
+		spaceBetween: 10,
+		slidesPerView: 4,
+		speed: 300,
+		loop: true,
+		freeMode: true,
+		watchSlidesProgress: true,
+		ClickAble: true,
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+		},
+	});
+	var swiper2 = new Swiper(".swiper_large_preview", {
+		spaceBetween: 10,
+		slidesPerView: 1,
+		// speed: 300,
+		speed: 0,
+		loop: true,
+		// freeMode: true,
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+		},
+		thumbs: {
+			swiper: swiper,
+		},
+	});
 
 
 
@@ -393,7 +401,7 @@
 	// Get CSRF token from cookie
 	function getCookie(name) {
 		let token = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
-		return token ? token.pop() : ''; 
+		return token ? token.pop() : '';
 	}
 
 	const btn = document.querySelector('#submit_btn');
@@ -411,7 +419,7 @@
 		const url = "{% url 'app:bids' %}"
 		fetch(url, {
 			method: 'POST',
-			headers:{
+			headers: {
 				'Accept': 'application/json',
 				'X-Requested-With': 'XMLHttpRequest',
 				'X-CSRFToken': csrftoken,
@@ -426,6 +434,6 @@
 		});
 	});
 
-  </script>
+</script>
 
 {% endblock %}
