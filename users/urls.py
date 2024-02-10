@@ -7,7 +7,7 @@ from . import views as users_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', users_views.home, name='home'),
+    # path('', users_views.home, name='home'),
     path('register/', users_views.register, name='register'),
     path('login/', users_views.login_view, name='login'),
     path('verify/x/<str:token>/', users_views.verify_account, name='users-verify'),

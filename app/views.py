@@ -207,6 +207,8 @@ def product_detail(request, id):
 @login_required
 def product_edit(request, id):
     product = get_object_or_404(Product, id=id)
+    if product.created_by != request.user:
+        return redirect('app:dashboard')
 
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         if request.method == 'POST':
